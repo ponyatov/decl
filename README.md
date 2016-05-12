@@ -1,5 +1,5 @@
 # decl
-### Prolog-powered diclarative template translator
+### Prolog-powered [decl]arative template translator
 
 (c) Dmitry Ponyatov <dponyatov@gmail.com>
 
