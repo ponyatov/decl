@@ -1,6 +1,7 @@
 % ololo
 
 l2s([],L,L).
+l2s([H|T],Y,[H|L]) :- l2s(T,Y,L).
 
 %join(_, [X], X) :- !.
 %join(Sep, [X | Xs], S) :-
