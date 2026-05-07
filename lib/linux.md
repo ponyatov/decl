@@ -11,3 +11,13 @@ X/
     X.linux     // Linux kernel config string specific for X item
     X.uclibc    // uClibc config strings
 ```
+
+## default config
+
+```files
+etc/
+    all.linux        // linux kernel sub-config for any target
+    all.uclbc        // uClibc sub-config for any target
+    ${APP}.linux     // \ application-specific linux subconfig
+    ${APP}.uclibc    // / (some optional features can be disabled for smaller kernel and faster rebuild)
+```
