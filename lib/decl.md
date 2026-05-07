@@ -5,4 +5,7 @@
 
 github: https://github.com/ponyatov/decl
 
+## [[decl/meta]]
 ## [[project maintenance]]
+## [[IDE]]: VSCode integration
+## [[Obsidian]]: documenting
