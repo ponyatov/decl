@@ -21,3 +21,15 @@ etc/
     ${APP}.linux     // \ application-specific linux subconfig
     ${APP}.uclibc    // / (some optional features can be disabled for smaller kernel and faster rebuild)
 ```
+
+## main
+
+- `os/linux/inc/linux.hpp`
+```cpp
+#pragma once
+
+extern int main(int argc,m char *argv[]); ///< program entry point
+extern void arg(int argc,m char *argv  ); ///< print command line argument
+```
+
+- `os/linux/src/linux.cpp`
