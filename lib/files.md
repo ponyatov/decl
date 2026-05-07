@@ -16,3 +16,13 @@ src/
 tmp/        # temporary files (build, log,..)
 ref/        # clone other's projects as reference from hithub here
 ```
+```
+.clang-format   # C++ code autoformatting
+.prettierrc     # JSON/JS  autoformatting
+```
+```
+apt.Debian      # default work system: Debian GNU/Linux 12+
+apt.Ubuntu      # for build & use on servers & VMs
+apt.Raspbian    # Raspberry Pi deploy
+apt.Msys        # MSYS2 dependencies (Windows/MinGW)
+```
