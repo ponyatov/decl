@@ -3,7 +3,7 @@
 
 - C++: default for embedded targets
 - pure C: tiny MCU's can't use full-size C++ so some code ust be written input C
-- CMake: build scripts
+- [[cmake|CMake]]: build scripts
 - GNU make: project management & some build automation
 - Python3: tests & automation scripts
 - JSON: config files
