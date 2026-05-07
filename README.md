@@ -1,4 +1,4 @@
-# ![logo][vscode/logo.png] `decl` 0.0.1
+# ![logo]{vscode/logo.png} `decl` 0.0.1
 ## declarative DSL into Embedded C++ translator
 
 (c) Dmitry Ponyatov <<dponyatov@gmail.com>> 2026 MIT
