@@ -29,22 +29,7 @@ class ARCH {}
 class OS {}
 ```
 
-## x86
-
-```decl
-hw pc {}
-hw qemu386 {}
-```
-```decl
-cpu i5 { arch=x86_64 }
-cpu i686 { arch=i386 }
-cpu i486 { arch=i386 }
-```
-```decl
-arch x86 {}
-arch x86_64:x86 {}
-arch i386:x86 {}
-```
+## [[x86]]
 
 ## Cortex-M
 
@@ -72,15 +57,8 @@ hw esp32c3: esp32c {}
 hw esp32c6: esp32c {}
 ```
 
-## OS
+## [[os]]
 
-```decl
-os linux {}     // embedded/backend
-os win32 {}     // retro WinXP+ still most compatible for modern systems
-os win64 {}     // Win10+
-os bare {}      // bare-metal
-os rtos {}      // target-specific FreeRTOS port
-```
 
 ## cross source generation
 
@@ -111,19 +89,4 @@ X/
     src/
         X.cpp
         *.cpp
-```
-
-## sample: generate x86 cross dirs & files
-
-```sh
-mkdir -p hw/{pc,qemu386}/{inc,src}
-mkdir -p cpu/{i5,i686,i486}/{inc,src}
-mkdir -p arch/{x86,i386,x86_64}/{inc,src}
-mkdir -p os/{linux,win32,win64,bare,rtos}/{inc,src}
-```
-```sh
-touch hw/{pc,qemu386}/{inc,src}/.gitignore
-touch cpu/{i5,i686,i486}/{inc,src}/.gitignore
-touch arch/{x86,i386,x86_64}/{inc,src}/.gitignore
-touch os/{linux,win32,win64,bare,rtos}/{inc,src}/.gitignore
 ```
