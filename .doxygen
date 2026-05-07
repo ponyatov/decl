@@ -1,0 +1,16 @@
+PROJECT_NAME           = "decl"
+PROJECT_NUMBER         = 0.0.1
+PROJECT_BRIEF          = "Declarative DSL to Embedded C++ Translator"
+PROJECT_LOGO           = vscode/logo.png
+LAYOUT_FILE            = doc/DoxygenLayout.xml
+OUTPUT_DIRECTORY       = doc
+HTML_OUTPUT            = html
+INPUT                  = README.md inc src
+FILE_PATTERNS          = *.hpp *.cpp
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+EXTRACT_LOCAL_CLASSES  = YES
