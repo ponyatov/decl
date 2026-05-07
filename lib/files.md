@@ -1,7 +1,7 @@
 # files
 ## project file structure
 
-```
+```files
 .vscode     // project-local configuration
 vscode      // VSCode extension
 bin/        // executable binaries & firmware images
@@ -16,11 +16,11 @@ src/
 tmp/        // temporary files (build, log,..)
 ref/        // clone other's projects as reference from hithub here
 ```
-```
+```files
 .clang-format   // C++ code autoformatting
 .prettierrc     // JSON/JS  autoformatting
 ```
-```
+```files
 apt.Debian      // default work system: Debian GNU/Linux 12+
 apt.Ubuntu      // for build & use on servers & VMs
 apt.Raspbian    // Raspberry Pi deploy
