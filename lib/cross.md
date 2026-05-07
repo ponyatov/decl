@@ -31,34 +31,11 @@ class OS {}
 
 ## [[x86]]
 
-## Cortex-M
+## [[cortex|Cortex-M]]
 
-```decl
-arch cortexm {}
-arch cortexm4: cortexm {}
-arch cortexm3: cortexm {}
-arch cortexm1: cortexm {}
-arch cortexm0: cortexm {}
-```
-
-## ESP32
-
-```decl
-arch esp
-arch xtensa:esp {}
-arch riscv:esp {}
-cpu lx106 { arch=xtensa }
-cpu lx107 { arch=xtensa }
-hw esp8266 { cpu=lx106 }
-hw esp32 { cpu=lx107 }
-hw esp32s { arch=xtensa }
-hw esp32c { arch=riscv }
-hw esp32c3: esp32c {}
-hw esp32c6: esp32c {}
-```
+## [[esp32]]
 
 ## [[os]]
-
 
 ## cross source generation
 
