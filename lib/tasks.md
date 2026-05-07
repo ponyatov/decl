@@ -14,7 +14,17 @@
                 "kind": "build",
                 "isDefault": false
             }
-        }
+        },
+        {
+            "label": "make: ai",
+            "type": "shell",
+            "command": "make",
+            "args": ["ai"],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
     ]
 }
 ```
