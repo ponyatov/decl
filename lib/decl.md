@@ -9,3 +9,33 @@ github: https://github.com/ponyatov/decl
 ## [[project maintenance]]
 ## [[IDE]]: VSCode integration
 ## [[Obsidian]]: documenting
+## [[spec]]
+
+I want to write code for Linux (x86 and rpi3+) and firmware for Cortex-M and
+ESP32C/ESP32S microcontrollers in my own high-level declarative DSL language.
+
+Syntax and semantics: I want all the goodies and syntax features from
+[[py/Python|Python]], [[Elixir]], and [[OCaml/OCaml|OCaml]]/[[Fsh|F#]]:
+- actor model (threads + async messaging)
+- rich pattern matching
+- my targets is heterogenous clusters of multi-platform nodes, so I need cross-node messaging and rich (de)serialization
+- class-based OOP
+
+Instead of compilation, **high-level translation** from a set of `decl` files (every .md file = decl module) into human-readable embedded C++ code **using AI** must be used.
+
+## Overview
+
+`decl` is a high-level declarative DSL translator that converts literal
+programming and specification files into human-readable embedded C++ code using
+AI-assisted translation. It targets heterogeneous clusters of multi-platform
+nodes including Linux (x86, RPi3+), Cortex-M microcontrollers, and ESP32C/ESP32S
+devices.
+
+## Features
+
+- Rich DSL syntax combining the best from Python, Elixir, and OCaml/F#
+- Actor model with threads and async messaging
+- Pattern matching for elegant code
+- Class-based OOP with inheritance and polymorphism
+- Cross-node messaging with automatic serialization/deserialization
+- Multi-platform support from high-end Linux to resource-constrained MCUs
