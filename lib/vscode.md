@@ -1,3 +1,20 @@
+# IDE
+## [[VSCode]] is a primary [[IDE/IDE|IDE]]
+
+## project-local configuration
+
+```sh
+mkdir .vscode
+touch .vscode/extensions.json
+touch .vscode/settings.json
+touch .vscode/tasks.json
+touch .vscode/launch.json
+touch .vscode/c_cpp_properties.json
+```
+
+## tasks
+
+```json
 {
     "version": "2.0.0",
     "tasks": [
@@ -10,15 +27,7 @@
                 "kind": "build",
                 "isDefault": false
             }
-        },
-        {
-            "label": "sync: -> metadoc",
-            "type": "shell",
-            "command": "rsync -av --delete ~/decl/lib/ ~/metadoc/decl/",
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            }
         }
     ]
 }
+```

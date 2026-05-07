@@ -5,6 +5,11 @@
 
 github: https://github.com/ponyatov/decl
 
+```sh
+git remote add gh   git@github.com:ponyatov/decl.git
+git remote add flic git@gitflic.ru:dponyatov/decl.git
+```
+
 ## [[decl/meta]]
 ## [[project maintenance]]
 ## [[IDE]]: VSCode integration
