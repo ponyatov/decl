@@ -2,8 +2,6 @@
 ## project file structure
 
 ```files
-.vscode     // project-local configuration
-vscode      // VSCode extension
 bin/        // executable binaries & firmware images
 doc/        //
     html/   // doxygen-generated reference manual

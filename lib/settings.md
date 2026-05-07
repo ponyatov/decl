@@ -1,3 +1,7 @@
+# settings
+## `.vscode/settings.json`
+
+```json
 {
     "files.exclude": {
         "doc/html": true, "**/node_modules/**": true,
@@ -101,3 +105,4 @@
             "CHERE_INVOKING": "1",
     }}}
 }
+```

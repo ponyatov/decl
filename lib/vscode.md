@@ -1,6 +1,11 @@
 # IDE
 ## [[VSCode]] is a primary [[IDE/IDE|IDE]]
 
+```files
+.vscode     // project-local configuration
+vscode      // VSCode extension
+```
+
 ## project-local configuration
 
 ```sh
@@ -12,22 +17,6 @@ touch .vscode/launch.json
 touch .vscode/c_cpp_properties.json
 ```
 
-## tasks
-
-```json
-{
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "doxy: gen",
-            "type": "shell",
-            "command": "doxygen",
-            "args": [".doxygen"],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            }
-        }
-    ]
-}
-```
+## [[tasks]]
+## [[settings]]
+## [[extension]]
