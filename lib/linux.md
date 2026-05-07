@@ -28,8 +28,24 @@ etc/
 ```cpp
 #pragma once
 
-extern int main(int argc,m char *argv[]); ///< program entry point
-extern void arg(int argc,m char *argv  ); ///< print command line argument
+extern int main(int argc, char *argv[]);  ///< program entry point
+extern void arg(int argc, char *argv  );  ///< print command line argument
 ```
 
 - `os/linux/src/linux.cpp`
+
+```cpp
+#include "linux.hpp"
+
+int main(int argc, char *argv[]) {
+    arg(0, argv[0]);
+    for (int i = 1; i < argc; i++) {  //
+        arg(i, argv[i]);
+    }
+    return 0;
+}
+
+void arg(int argc, char *argv) {  //
+    fprintf(stderr, "%i:%s\n", argc, argv);
+}
+```
