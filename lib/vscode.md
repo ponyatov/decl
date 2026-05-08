@@ -5,6 +5,13 @@
 .vscode     // project-local configuration
 vscode      // VSCode extension
 ```
+## install
+
+https://code.visualstudio.com/download
+
+```sh
+sudo dpkg -i ~/Downloads/code_amd64.deb
+```
 
 ## project-local configuration
 
