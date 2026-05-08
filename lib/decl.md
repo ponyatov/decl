@@ -49,3 +49,11 @@ devices.
 - Class-based OOP with inheritance and polymorphism
 - Cross-node messaging with automatic serialization/deserialization
 - Multi-platform support from high-end Linux to resource-constrained MCUs
+
+### Philosophy
+
+Instead of traditional compilation, `decl` uses **literal programming** principles:
+
+- Every `.md` file is a `decl` module (Markdown + Decl code)
+- AI-assisted translation generates human-readable **Embedded C++**
+- Documentation and code live together
