@@ -12,7 +12,6 @@
         "*.ld": "linkerscript", "*.ld.fix": "linkerscript",
         "*.ioc": "properties", "*.ocd": "properties",
         "requirements.*": "properties",
-        "*.ksy": "yaml",
         "*.ini": "properties", "*.md": "decl"
     },
 
