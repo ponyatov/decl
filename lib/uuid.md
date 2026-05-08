@@ -1,5 +1,9 @@
 # uuid
 
+```decl
+protocol UUID { version=4 }
+```
+
 - JS
 ```sh
 npm add uuid

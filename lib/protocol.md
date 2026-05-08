@@ -3,7 +3,4 @@ class Protocol {
     ISO:opt<int>
 }
 
-class Mosquitto: Software {}
-class MQTT: Protocol { broker=default<Mosquitto> }
-
 class MODBUS: Protocol { variants=RTU|TCP }
