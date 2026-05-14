@@ -18,7 +18,10 @@ class HW {}
 class HWSection: HW {}
 
 // software component
-class Software { kw='sw' }
+class Software {
+    kw='sw'
+    apt:option<string> // list of Debian packages splitted with spaces
+}
 // prococol
 class Protocol { kw='protocol' }
 

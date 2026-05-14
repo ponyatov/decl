@@ -8,8 +8,5 @@ class Hub: HWSection {
     servers = [MQTT,Redis,Logger]
 }
 
-// подсистема логирования
-sw Logger {}
-sw GreyLog: Logger {}
 
 ```

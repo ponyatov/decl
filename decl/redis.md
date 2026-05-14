@@ -1,4 +1,4 @@
 # redis
 
 // внутренняя база данных
-db Redis {}
+db Redis { apt='redis' }
