@@ -28,8 +28,8 @@ apt.Msys        // MSYS2 dependencies (Windows/MinGW)
 ## `decl` metalanguage specification
 
 ```
-decl/           // metalanguage specification (modular structure)
-    decl/*.md   // common `decl` spec
+decl/           // metalanguage specification ()
+    *.md        // common `decl` spec
     cpp/        // `decl` extension: C++ target (code generation)
     js/         // JavaScript target
     mcu/        // generic MCU-specific
