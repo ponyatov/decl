@@ -5,8 +5,12 @@
 bin/        // executable binaries & firmware images
 doc/        //
     html/   // doxygen-generated reference manual
-lib/
-    *.md    // treat .md extension as Markdown+Decl (literal programming)
+decl/
+    **/*.md // treat .md file extension as Markdown+Decl (literal programming)
+etc/        // custom app configs
+    app.ini
+lib/        // scripts library (if custom script language used in app)
+    *.f
 inc/
     *.hpp   // app-specific header files
 src/
@@ -30,11 +34,13 @@ apt.Msys        // MSYS2 dependencies (Windows/MinGW)
 ```
 decl/           // metalanguage specification (modular structure)
     decl/*.md   // common `decl` spec
-    cpp/        // `decl` extension: C++ target (code generation)
+    cpp/        // `decl` module: C++ target (code generation)
     js/         // JavaScript target
     mcu/        // generic MCU-specific
     ...
 ```
+
+see [[decl/module.md]]
 
 - decl/ directory shared beetween projects via symlink:
 ```
