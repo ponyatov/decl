@@ -1,6 +1,6 @@
 .PHONY: ai
 ai:
 	cat README.md \
-		package.json js/*.mjs js/*.js \
-		decl/*.md decl/*/*.md \
+		decl/decl/*.md \
+		decl/js/*.md package.json js/*.mjs js/*.js \
 			> tmp/$(APP).ai.md

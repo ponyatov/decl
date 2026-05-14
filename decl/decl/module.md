@@ -16,3 +16,13 @@
 ## Linux (host, embedded and custom build)
 
 - `decl/linux/`
+
+## networking
+
+- `decl/net/`
+
+## databases
+
+- `decl/db/`
+  - `redis`
+  - `mongo`

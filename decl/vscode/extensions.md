@@ -1,3 +1,6 @@
+`.vscode/extensions.json`
+
+```json
 {
     "recommendations": [
         "statiolake.vscode-auto-tab-closer",
@@ -33,10 +36,11 @@
         // "espressif.esp-idf-extension",
         // Python
         "ms-python.python",
-        "ms-python.autopep8",
+        "ms-python.autopep8"
         // Rust
         "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
         "vadimcn.vscode-lldb",
     ]
 }
+```
