@@ -1,0 +1,4 @@
+# ln -fs ~/decl/.unison ~/.unison/decl.prf
+# unison decl
+root = /home/dponyatov/decl/decl
+root = /home/dponyatov/metadoc/decl
