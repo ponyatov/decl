@@ -10,5 +10,5 @@ make install
 
 - append to `~/.bashrc` to use `fzf` with bash history search (Ctrl+R)
 ```sh
-. /usr/share/doc/fzf/examples/key-bindings.bash
+echo '. /usr/share/doc/fzf/examples/key-bindings.bash' >> ~/.bashrc
 ```
