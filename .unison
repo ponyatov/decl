@@ -2,3 +2,6 @@
 # unison decl
 root = /home/dponyatov/decl/decl
 root = /home/dponyatov/metadoc/decl
+prefer = newer
+watch = true
+batch = true
