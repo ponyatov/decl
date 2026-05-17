@@ -4,9 +4,10 @@
     "description": "declarative DSL into JS translator: code samples",
     "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
     "license": "MIT",
-    "main": "js/hello.js",
+    "main": "js/comment.js",
     "scripts": {
-        "start": "nodejs js/hello.js",
+        "start": "nodejs js/comment.js",
+        "watch": "nodemon js/comment.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -17,5 +18,8 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/ponyatov/decl.git"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
     }
 }

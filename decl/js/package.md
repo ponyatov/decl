@@ -13,6 +13,7 @@
     "main": "js/hello.js",
     "scripts": {
         "start": "nodejs js/hello.js",
+        "watch": "nodemon js/hello.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -23,6 +24,9 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/ponyatov/decl.git"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
     }
 }
 ```

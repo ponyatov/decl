@@ -1,4 +1,5 @@
-# C++ target
+# `cpp::`
+## embedded C/C++ target
 
 - preferred: embedded C++ (embedded Linux & MCUs)
   - hard realtime friendly code

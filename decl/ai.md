@@ -1,5 +1,5 @@
 # deepseek
-## free public chat used as AI engine
+## free public chat used as AI translation engine
 
 - deepseek
 	  - can't work with file system directly
@@ -12,3 +12,5 @@
 - for short `decl` snippets in chat
 	- work as a high-level code translator from `decl`
 	- into selected target language: JS
+- generated code must be optimized
+    - to be small & simple as possible

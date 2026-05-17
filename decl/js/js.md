@@ -1,4 +1,5 @@
-# js: JavaScript target
+# `js::`
+## JavaScript target
 
 - backend: Node.js
 - embedded: Espruino

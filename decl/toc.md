@@ -2,5 +2,5 @@
 ## Table of Contents
 
 ## [[decl/Introduction]]
-## [[decl/core/core]]
-## 
+## [[decl/core/core|Core Language Specification]]
+## [[decl/std/std|Standard Library]]
