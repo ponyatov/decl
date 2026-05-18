@@ -10,4 +10,3 @@
 ## [[Modules and Deployment]]
 ## [[decl/std/IO|input/output]]
 ## [[Target Language Specifications]]
-## [[Low-Level Platform Interop]]
