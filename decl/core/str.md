@@ -32,3 +32,5 @@ counted [[WCS-16]] strings encoding used to maximize speed of string operations:
 - little-endian byte order as the most popular platforms
 	- single machine commands for ld/st/cmp
 - 64K max string length large enought for any apps
+
+## [[interpolation]]

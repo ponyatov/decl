@@ -38,14 +38,14 @@ AI-assisted translation. It targets heterogeneous clusters of multi-platform
 nodes including Linux (x86, RPi3+), Cortex-M microcontrollers, and ESP32C/ESP32S
 devices.
 
-## Literate Programming
+## [[Literate Programming]]
 
 - Markdown-разметка: описание логики системы в свободной форме
 - decl-фрагменты: формальное описание на DSL
 
 ## Features
 
-- Rich DSL syntax combining the best from Python, Elixir, and OCaml/F#
+- Rich DSL syntax combining the best from Python, Elixir, Nim, and OCaml/F#
 - Actor model with threads and async messaging
 - Pattern matching for elegant code
 - Class-based OOP with inheritance and polymorphism
