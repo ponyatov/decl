@@ -5,4 +5,5 @@
 	- no `tab` chars, only spaces
 - `;` used for code splitting in single-line code snippets
 - `\` for line continuations
-	- in multi-line [[decl/core/str|str]] can be used after `"` and `'` 
+	- in multi-line [[decl/core/str|str]] can be used after `"` and `'` to remove leading lf
+
