@@ -3,10 +3,10 @@
 
 samples & rules for translation into:
 - [[decl/js/io]] 
+	- [[decl/js/out]]
 - [[decl/cpp/io]]
 
 ## console
-and primitive [[decl/core/log]]
 
 ```decl
 io out // C: stdout
@@ -15,3 +15,5 @@ io err // C: stderr
 ```
 
 ![[decl/core/hello]]
+
+## [[decl/core/log]]

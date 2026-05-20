@@ -5,3 +5,4 @@
   - hard realtime friendly code
   - minimize used libs (including too fat STL)
 - generic C++ (backend/desktop)
+- ignore anything relates to immutability

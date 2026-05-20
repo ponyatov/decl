@@ -1,17 +1,11 @@
+# list
+## compile to JS
 
-output must be:
+```decl
+let empty_list = []
+var heterogenous = [ 1 ; 2.3 ; 'hello' ]
 ```
-empty_list:[]
-empty_list:[]
-```
-
-most close generated JS code but with errors: list as null string
 ```js
 let empty_list = [];
-console.log(`empty_list: ${empty_list}`);
-```
-fixed code:
-```js
-let empty_list = [];
-console.log(`empty_list:${empty_list.length === 0 ? '[]' : empty_list}`);
+let heterogenous = [1, 2.3, 'hello'];
 ```

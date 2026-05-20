@@ -4,10 +4,10 @@
     "description": "declarative DSL into JS translator: code samples",
     "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
     "license": "MIT",
-    "main": "js/container.js",
+    "main": "js/vector.js",
     "scripts": {
-        "start": "nodejs js/container.js",
-        "watch": "nodemon js/container.js",
+        "start": "nodejs js/vector.js",
+        "watch": "nodemon js/vector.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [

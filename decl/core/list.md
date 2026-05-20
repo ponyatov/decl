@@ -16,3 +16,5 @@ var heterogenous = [ 1 ; 2.3 ; 'hello' ];
 
 - ';' splits items
 - ',' prohibited as used in [[decl/core/tuple]]
+
+> [[decl/js/list]]

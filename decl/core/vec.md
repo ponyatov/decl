@@ -18,3 +18,5 @@ var num_vec = [| 1 ; 2 ; 3 |]
 
 - ';' splits items
 - ',' prohibited as used in [[decl/core/tuple]]
+
+- [[decl/js/vector]]

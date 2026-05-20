@@ -16,3 +16,5 @@ let rgb     = (r: 255, g: 128, b: 0) // with names fields
 let x,y = point2d                   // expand with pattern match
 var (r<=0xFF,g<=0xFF,b<=0xFF) = rgb // with value checking
 ```
+
+- [[decl/js/tuple]]

@@ -1,5 +1,5 @@
 # `js::`
-## JavaScript target
+## [[JavaScript]] target
 
 - backend: Node.js
 - embedded: Espruino
@@ -9,4 +9,4 @@
 	- .js
 		- .cjs [[CommonJS]]
 		- .mjs [[ECMAScript Module]]
-
+- ignore anything relates to immutability
