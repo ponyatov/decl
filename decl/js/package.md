@@ -10,10 +10,10 @@
     "description": "declarative DSL into JS translator: code samples",
     "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
     "license": "MIT",
-    "main": "js/hello.js",
+    "main": "js/p2p.js",
     "scripts": {
-        "start": "nodejs js/hello.js",
-        "watch": "nodemon js/hello.js",
+        "start": "nodejs js/p2p.js",
+        "watch": "nodemon js/p2p.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [

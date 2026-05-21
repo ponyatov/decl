@@ -15,3 +15,6 @@ out << `${empty_list}`           // ${v} interpolates into 'v:value'
 
 > [[decl/js/interpolation]]
 
+## access methods
+
+- for props (fields) custom access methods can be defined for special formatting

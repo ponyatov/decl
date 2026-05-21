@@ -1,7 +1,7 @@
 # modbus
 
 ```decl
-protocol modbus {}
+protocol MODBUS { variants=RTU|TCP }
 ```
 
 ## RTU over [[serial]]
