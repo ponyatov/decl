@@ -1,124 +1,138 @@
-/// @file PingPong protocol implementation
-
-class Message {
-    static #id = 0;
-
-    constructor(src, dst, msg = this.constructor.name.toLowerCase()) {
-        this.src = src; // source node
-        this.dst = dst; // destination node
-        this.msg = msg; // message type
-        this.id = Message.#id++; // unique message id
-        this.ts = Date.now(); // timestamp
-    }
-
-    toString() {
-        return `[${this.src.name}#${this.id}→${this.dst.name}:${this.msg}]`;
-    }
-}
-
-class Ping extends Message {}
-class Pong extends Message {}
-
-class Actor {
-    #name; // optional name
-    #msg; // messages mailbox
-    #peer;
-    #state = 'idle';
-
-    state() {
-        console.log(this, this.#state);
-        // switch (this.#state) {
-        //     case 'idle':
-        //         break;
-        //     case 'beacon':
-        //         this.#state = 'ping';
-        //         break;
-        //     case 'ping':
-        //         this.#peer.send = new Ping();
-        //         this.#state = 'idle';
-        //         break;
-        //     case 'pong':
-        //         this.#state = 'idle';
-        //         break;
-        //     case 'recv':
-        //         break;
-        // }
-    }
-
-    constructor(name) {
-        this.#name = name || 'actor';
-        this.#msg = [];
-        this.beacon = () => {
-            this.#state = 'beacon';
-        };
-    }
-
-    get pop() {
-        return this.#msg.shift();
-    }
-    set push(message) {
-        this.#msg.push(message);
-    }
-
-    send(message) {
-        this.push(message);
-    }
-
-    get name() {
-        return this.#name;
-    }
-
-    toString() {
-        return `${this.#name}[${this.#msg.map((m) => m.toString()).join(',')}]`;
-    }
-}
-
-class Client extends Actor {
-    constructor(name) {
-        super(name || 'client');
-    }
-}
-
-class Server extends Actor {
-    constructor(name) {
-        super(name || 'server');
-    }
-}
-
-class Protocol {
-    #beacon = 1000; // 1<s>
-    #timer;
-    get beacon() {
-        return this.#beacon;
-    }
-    // set beacon(lambda) {
-    //     this.#timer = setInterval(lambda, this.#beacon);
-    // }
-}
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+class Protocol {}
 
 class PingPong extends Protocol {
-    #client;
-    #server;
-    constructor(client, server) {
+    constructor(p1, p2) {
         super();
-        this.#client = client;
-        this.#server = server;
-        this.#client.peer = this.#server;
-        this.#server.peer = this.#client;
-    }
-
-    run() {
-        while (true) {
-            this.#client.state();
-            this.#server.state();
-            delay(1000);
+        p1.peer = p2;
+        p2.peer = p1;
+        p1.state = 'ping';
+        for (let i = 0; i < 7; i++) {
+            p1.run();
+            p2.run();
         }
     }
 }
 
-client = new Client();
-server = new Server();
-p2p = new PingPong(client, server);
-p2p.run();
+class Msg {
+    #src;
+    #dst;
+    #id;
+    static #_id = 0;
+    #ts;
+    #data;
+    get data() {
+        return this.#data;
+    }
+    constructor(src, dst, data) {
+        this.#src = src;
+        this.#dst = dst;
+        this.#id = Msg.#_id++;
+        this.#ts = Date.now();
+        this.#data = data;
+    }
+
+    toString() {
+        return `${this.#src.name}:${this.#id}:${this.#dst.name} ${this.#data}`;
+    }
+}
+
+class Ping extends Msg {
+    constructor(src, dst) {
+        super(src, dst, 'ping');
+    }
+}
+
+class Pong extends Msg {
+    constructor(src, dst) {
+        super(src, dst, 'pong');
+    }
+}
+
+class Actor {
+    #name;
+    get name() {
+        return this.#name;
+    }
+
+    #peer;
+    get peer() {
+        return this.#peer;
+    }
+
+    #state = 'idle';
+
+    get state() {
+        return this.#state;
+    }
+    set state(other) {
+        this.#state = other;
+        console.log(`\t${this} -> ${this.state}`);
+    }
+
+    #msg;
+
+    set msg(message) {
+        this.#msg.push(message);
+        console.log(`\t${this} push ${message}`);
+    }
+
+    get msg() {
+        let t = this.#msg.shift();
+        console.log(`\t${this} pop ${t}`);
+        return t;
+    }
+
+    get pending() {
+        return this.#msg.length > 0;
+    }
+
+    set peer(actor) {
+        this.#peer = actor;
+    }
+
+    constructor(name) {
+        this.#name = name;
+        this.#msg = [];
+    }
+
+    toString() {
+        return `${this.#name}[${this.#msg.length}]`;
+    }
+
+    run() {
+        console.log(`${this} ${this.#state} ${this.pending}`);
+        switch (this.state) {
+            case 'idle':
+                if (this.pending) this.state = 'recv';
+                break;
+            case 'beacon':
+                this.state = 'ping';
+                break;
+            case 'ping':
+                this.peer.msg = new Ping(this, this.peer);
+                this.state = 'wait';
+                break;
+            case 'wait':
+                if (this.pending) {
+                    let msg = this.msg;
+                    if (msg.data == 'pong') {
+                        this.state = 'idle';
+                    }
+                }
+                break;
+            case 'recv':
+                this.state = 'pong';
+                break;
+            case 'pong':
+                this.peer.msg = new Pong(this, this.peer);
+                this.state = 'idle';
+                break;
+            default:
+                throw new Error(`${this.state}`);
+        }
+    }
+}
+
+p1 = new Actor('p1');
+p2 = new Actor('p2');
+p2p = new PingPong(p1, p2);

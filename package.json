@@ -4,10 +4,10 @@
     "description": "declarative DSL into JS translator: code samples",
     "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
     "license": "MIT",
-    "main": "js/p2p.js",
+    "main": "js/pingpong.js",
     "scripts": {
-        "start": "nodejs js/p2p.js",
-        "watch": "nodemon js/p2p.js",
+        "start": "nodejs js/pingpong.js",
+        "watch": "nodemon js/pingpong.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
