@@ -5,9 +5,9 @@
 ```decl
 protocol PingPong {
 
-	state {                              // protocol's state machine
-		idle -> beacon -> ping -> idle   // periodic
-		idle -> recv   -> pong -> idle   // answer on pings
+	state {                                     // protocol's state machine
+		idle -> beacon -> ping -> wait -> idle  // periodic
+		idle -> recv   -> pong -> idle          // answer on pings
 	}
 
 	// common message fields
