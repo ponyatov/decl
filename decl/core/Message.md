@@ -1,0 +1,5 @@
+# Message
+
+```decl
+class Message {}
+```

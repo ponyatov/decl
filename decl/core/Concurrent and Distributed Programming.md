@@ -1,5 +1,5 @@
 # Concurrent and Distributed Programming
 
-## [[decl/core/Actor Model]]
+## [[decl/core/Actor]]
 ## [[Concurrency Primitives]]
 ## [[decl/core/Distributed Computing]]
