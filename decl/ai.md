@@ -14,6 +14,9 @@
 	- into selected target language: JS
 - **generated code must be**
 	- optimized (not minimized!) to be as small & simple as possible
+	- must be commented in doxygen style
+		- if @date used: format `DD/MM/YYYY hh:mm` (real current local time forced)
+		- `///` format
 	 - should be formatted with vertical alignment
 	 - type annotations preferred without spaces around ':'
 - DECL
@@ -33,3 +36,5 @@
 		- if any function has no body code,
 			- it must be replaced with prototype without `{}`
 			- and totally dropped if was not used in a code
+- JS
+	- don't use props/privates: prefer generic JS style
