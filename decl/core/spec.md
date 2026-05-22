@@ -6,7 +6,6 @@
 ```decl
 // root superclass
 class Object { 
-    kw='class'          // keyword
     init(name:str)      // any object can have name
 }
 ```
@@ -19,10 +18,9 @@ class HWSection: HW {}
 
 // software component
 class Software {
-    kw='sw'
+    #kw='sw'
     apt:option<string> // list of Debian packages splitted with spaces
 }
 // prococol
-class Protocol { kw='protocol' }
-
+class Protocol
 ```

@@ -1,9 +1,10 @@
 # Variables and Bindings
 
-```
+```decl
 let name = "Alice"    // immutable by default
 let value: int = 1234 // optional type selector
 var Sp = 0:u16        // numeric literals also can have type selector
+actor = 'Bob'         // let is default and can be omitted (preferred!)
 ```
 
 - types:

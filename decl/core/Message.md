@@ -1,13 +1,14 @@
-# msg
+# Message
 ## actor message
 
 ```decl
-class msg {
+class Message {
+	#short = 'msg'
 	src:actor     // sender
 	dst:actor     // receiver
 	ts:timestamp  // send time marker
-	data:opt<any> // any data to be passed
+	data:?any     // any data to be passed
 }
 ```
 
-- [[core/js/msg]]
+- [[core/js/Message]]

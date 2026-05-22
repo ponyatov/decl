@@ -1,7 +1,7 @@
-# [[decl/core/actor|actor]]
+# [[decl/core/Actor|Actor]]
 ## compilation to JS
 
-![[core/js/msg]]
+![[core/js/Message]]
 
 ```js
 class Actor {

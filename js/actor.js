@@ -52,3 +52,29 @@ let b = new Actor('bob');
 console.log(`${a} -> ${b}`);
 a.send(b, 'hello');
 // console.log(`${a} -> ${b}`);
+
+class Exists extends Error {}
+
+class Broker {
+    constructor() {
+        this.topics = new Map();
+    }
+
+    push(topic) {
+        if (this.topics.has(topic.name)) throw new Exists();
+        this.topics.set(topic.name, topic);
+    }
+}
+
+var broker = new Broker('broker');
+
+class Topic {
+    constructor(name) {
+        this.name = name;
+        this.subscribers = [];
+        broker.push(this);
+    }
+}
+
+let power = new Topic('power');
+console.log(power);

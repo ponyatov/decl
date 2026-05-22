@@ -27,6 +27,8 @@ UFCS is a feature that blurs the line between free functions (not tied to a type
 
 ## no-parens
 
+> DECL HAS NO PARENS!!! `()` in function/call syntax -- used only for expression or operand grouping
+
 there is a feature proposed by some languages, that aims to allow any function definitions and calls to be written with more readable syntax:
 - optional parens
 	- no parents for calling no-argument functions

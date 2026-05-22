@@ -2,8 +2,8 @@
 
 ```decl
 class Protocol {
-    RFC:opt<int>
-    ISO:opt<int>
+    RFC:?int
+    ISO:?int
     beacon = 1<s>           // ping/pong interval to keep live
     
     actor {                 // common elements
