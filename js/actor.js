@@ -105,12 +105,17 @@ class DC extends Actor {
         super(`DC${voltage}`);
         this.voltage = voltage; ///< Nominal voltage (V)
         this.current = current; ///< Max current (A)
+        this.ac = true; ///< AC power status (true = online)
+        this.acv = 0;///< current voltage input (mains)
+        this.dcv = 0; ///< Current voltage output
+        this.dci = 0;///< Current load (A)
+        this.bat = 0;///< lead acid battery voltage
     }
 }
 
 let power = new Topic('power');
-let DC12 = new DC(12,2);
-let DC24 = new DC(24,4);
+let DC12 = new DC(12, 2);
+let DC24 = new DC(24, 4);
 console.log(DC12);
 console.log(DC24);
 let overcurrent = new Actor('+I'); // short circuit
