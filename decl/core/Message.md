@@ -1,5 +1,0 @@
-# Message
-
-```decl
-class Message {}
-```
