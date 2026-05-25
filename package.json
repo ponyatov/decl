@@ -4,10 +4,11 @@
     "description": "declarative DSL into JS translator: code samples",
     "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
     "license": "MIT",
-    "main": "js/actor.js",
+    "main": "js/mqtt.js",
     "scripts": {
-        "start": "nodejs js/actor.js",
-        "watch": "nodemon js/actor.js",
+        "start": "nodejs js/mqtt.js",
+        "watch": "nodemon js/mqtt.js",
+        "mqtt": "nodemon js/mqtt.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -21,5 +22,8 @@
     },
     "devDependencies": {
         "nodemon": "^3.1.14"
+    },
+    "dependencies": {
+        "mqtt": "^5.15.1"
     }
 }

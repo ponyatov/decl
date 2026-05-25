@@ -37,3 +37,4 @@ glob broker:Broker // system-wide message broker
 ```
 
 - [[decl/js/pubsub]]
+- [[decl/net/mqtt|mqtt]]
