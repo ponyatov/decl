@@ -1,12 +1,18 @@
 # intensive polling over ispdas
 
-IP = '10.130.2.112'
+IP = '10.130.2.112' # icpdas
+# IP = '10.130.2.11' # hub
+
 PORT = 10001
 IFACE = 'enp0s25'
+
+SERIAL = '/dev/ttyAMA3'
+BAUDRATE = 115200
+
 TIMEGAP = 1.0
 
 from pymodbus.client import ModbusTcpClient
-from pymodbus.transaction import ModbusRtuFramer, ModbusSocketFramer
+from pymodbus.transaction import ModbusRtuFramer
 
 icpdas = ModbusTcpClient(
     host=IP,      # ICP DAS device IP
@@ -14,6 +20,7 @@ icpdas = ModbusTcpClient(
     framer=ModbusRtuFramer,   # Use RTU framing over TCP,
     timeout=1
 )
+
 print(icpdas)
 assert (icpdas.connect())
 
@@ -24,7 +31,7 @@ icpdas.write_register(slave=131, address=0, value=1) # on
 import datetime as dt
 import time
 
-TIMEGAP = 13e-3
+TIMEGAP = 15e-3
 print(f'TIMEGAP:{TIMEGAP*1e3}ms')
 
 def fault_maker():
