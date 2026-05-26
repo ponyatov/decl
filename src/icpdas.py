@@ -25,6 +25,8 @@ print(icpdas)
 assert (icpdas.connect())
 
 icpdas.read_holding_registers(slave=131, address=0, count=1).registers
+icpdas.read_holding_registers(slave=51, address=0, count=1).registers
+
 icpdas.write_register(slave=131, address=0, value=0) # off
 icpdas.write_register(slave=131, address=0, value=1) # on
 
