@@ -1,6 +1,7 @@
 .PHONY: ai
 ai: sync
 	cat README.md \
-		decl/*.md decl/core/* \
-		decl/js/* decl/hw/* package.json js/*.mjs js/*.js \
+		decl/*.md decl/core/* decl/hw/* \
+		decl/py/* \
 			> tmp/$(APP).ai.md
+# 		decl/js/* package.json js/*.mjs js/*.js \
