@@ -1,5 +1,7 @@
-# sudo ln -fs /home/operator1/modbus/etc/ama3.service ama3.service
-# sudo systemctl start ama3.service
+# sudo ln -fs /home/operator1/modbus/etc/ama3.service /etc/systemd/system/ama3.service
+# sudo systemctl daemon-reload
+# sudo systemctl enable ama3.service
+# sudo systemctl start  ama3.service
 # sudo systemctl status ama3.service
 
 [Unit]
@@ -9,7 +11,7 @@ After=multi-user.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/stty -F /dev/ttyAMA3 115200 cs8 -parenb -cstopb
+ExecStart=/usr/bin/stty -F /dev/ttyAMA3 115200 cs8 -parenb -cstopb -ignpar -crtscts raw -echo min 1 time 1
 
 [Install]
 WantedBy=multi-user.target

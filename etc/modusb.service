@@ -1,0 +1,17 @@
+# sudo ln -fs /home/operator1/modbus/etc/modusb.service /etc/systemd/system/modusb.service
+# sudo systemctl daemon-reload
+# sudo systemctl enable modusb.service
+# sudo systemctl start  modusb.service
+# sudo systemctl status modusb.service
+
+[Unit]
+Description=Configure ttyUSB0 serial port to 115200 8n1
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/stty -F /dev/ttyUSB0 115200 cs8 -parenb -cstopb
+
+[Install]
+WantedBy=multi-user.target
