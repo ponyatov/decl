@@ -1,37 +1,27 @@
-# intensive polling over ispdas
+import time
+import datetime as dt
+from pymodbus.transaction import ModbusRtuFramer
+from pymodbus.client import ModbusSerialClient
 
 IP = '10.130.2.112' # icpdas
-# IP = '10.130.2.11' # hub
-
 PORT = 10001
-IFACE = 'enp0s25'
-
-SERIAL = '/dev/ttyAMA3'
-BAUDRATE = 115200
-
-TIMEGAP = 1.0
-
-from pymodbus.client import ModbusTcpClient
-from pymodbus.transaction import ModbusRtuFramer
+IFACE = 'eth0'
 
 icpdas = ModbusTcpClient(
     host=IP,      # ICP DAS device IP
     port=PORT,               # Default Modbus TCP port
-    framer=ModbusRtuFramer,   # Use RTU framing over TCP,
+    framer=ModbusRtuFramer,
     timeout=1
 )
 
 print(icpdas)
 assert (icpdas.connect())
 
-icpdas.read_holding_registers(slave=131, address=0, count=1).registers
-icpdas.read_holding_registers(slave=51, address=0, count=1).registers
+# icpdas.read_holding_registers(slave=131, address=0, count=1).registers
+# icpdas.read_holding_registers(slave=51, address=0, count=1).registers
 
-icpdas.write_register(slave=131, address=0, value=0) # off
-icpdas.write_register(slave=131, address=0, value=1) # on
-
-import datetime as dt
-import time
+# icpdas.write_register(slave=131, address=0, value=0)  # off
+# icpdas.write_register(slave=131, address=0, value=1)  # on
 
 TIMEGAP = 15e-3
 print(f'TIMEGAP:{TIMEGAP*1e3}ms')

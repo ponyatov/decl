@@ -1,0 +1,15 @@
+# sudo ln -fs /home/operator1/modbus/etc/ama3.service ama3.service
+# sudo systemctl start ama3.service
+# sudo systemctl status ama3.service
+
+[Unit]
+Description=Configure ttyAMA3 serial port to 115200 8n1
+After=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/stty -F /dev/ttyAMA3 115200 cs8 -parenb -cstopb
+
+[Install]
+WantedBy=multi-user.target
