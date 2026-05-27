@@ -5,7 +5,7 @@ from pymodbus.client import ModbusSerialClient
 
 
 class Tester:
-    def __init__(self, port='/dev/ttyAMA3', baud=115200, timeout=1, timegap=12e-3):
+    def __init__(self, port='/dev/ttyAMA3', baud=115200, timeout=1, timegap=14e-3):
         self.port = port
         self.baud = baud
         self.timeout = timeout
@@ -17,27 +17,34 @@ class Tester:
             parity='N',
             stopbits=1,
             framer=ModbusRtuFramer,
-            timeout=self.timeout
+            timeout=self.timeout,
+            rtscts=True
         )
         assert (self.client.connect())
 
     def tester(self):
         while True:
             # time
-            time.sleep(self.timegap)
             ts = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             # esphome
-            di = \
-                self.client.read_holding_registers(
+            time.sleep(self.timegap)
+            try:
+                answ = self.client.read_holding_registers(
                     slave=51, address=0, count=1)
+                di = answ.registers[0]
+            except AttributeError:
+                di = answ
             print(f'{ts} {self.port} {"esphome":<8} di:{di}')
-            # drs power
+            # drs input
+            time.sleep(self.timegap)
             try:
                 answ = self.client.read_input_registers(
                     slave=131, address=0x50, count=1)
                 u = answ.registers[0] / 1e1
             except AttributeError:
                 u = answ
+            # drs output
+            time.sleep(self.timegap)
             try:
                 answ = self.client.read_input_registers(
                     slave=131, address=0x60, count=3)
