@@ -22,6 +22,15 @@ class Tester:
         )
         assert (self.client.connect())
 
+    def read(self, id, addr, count=1):
+        return self.client.read_holding_registers(slave=id, address=addr, count=count)
+
+    def write(self, id, addr, value):
+        self.client.write_register(slave=id, address=addr, value=value)
+
+    def input(self, id, addr, count=1):
+        return self.client.read_input_registers(slave=id, address=addr, count=count)
+
     def tester(self):
         while True:
             # time
@@ -29,8 +38,7 @@ class Tester:
             # esphome
             time.sleep(self.timegap)
             try:
-                answ = self.client.read_holding_registers(
-                    slave=51, address=0, count=1)
+                answ = self.read(51, 0)
                 di = answ.registers[0]
             except AttributeError:
                 di = answ
@@ -38,16 +46,14 @@ class Tester:
             # drs input
             time.sleep(self.timegap)
             try:
-                answ = self.client.read_input_registers(
-                    slave=131, address=0x50, count=1)
+                answ = self.input(131, 0x50)
                 u = answ.registers[0] / 1e1
             except AttributeError:
                 u = answ
             # drs output
             time.sleep(self.timegap)
             try:
-                answ = self.client.read_input_registers(
-                    slave=131, address=0x60, count=3)
+                answ = self.input(131, 0x60, 3)
                 v, i, t = answ.registers
                 v /= 1e2
                 i /= 1e2
@@ -64,24 +70,10 @@ usb = Tester('/dev/ttyUSB0')
 ama3.tester()
 # usb.tester()
 
-# # self.client.read_holding_registers(slave=131, address=0, count=1).registers
-# # self.client.read_holding_registers(slave=51, address=0, count=1).registers
+# ama3.write(131, 0, 1)
 
-# # self.client.write_register(slave=131, address=0, value=0)  # off
-# # self.client.write_register(slave=131, address=0, value=1)  # on
+# self.client.read_holding_registers(slave=131, address=0, count=1).registers
+# self.client.read_holding_registers(slave=51, address=0, count=1).registers
 
-
-# def fault_maker():
-#     while True:
-#         ts = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-#         # DRS polling
-#         time.sleep(TIMEGAP)
-#         # ESPhome polling
-#         di = \
-#             self.client.read_holding_registers(
-#                 slave=51, address=0, count=1).registers[0]
-#         print(f'{ts} {"esphome":<8} di:{di}')
-#         time.sleep(TIMEGAP)
-
-
-# fault_maker()
+# self.client.write_register(slave=131, address=0, value=0)  # off
+# self.client.write_register(slave=131, address=0, value=1)  # on
