@@ -1,89 +1,55 @@
-from pymodbus.client import ModbusTcpClient
-from pymodbus.transaction import ModbusRtuFramer, ModbusSocketFramer
 import time
+import datetime as dt
+from pymodbus.transaction import ModbusRtuFramer
+from pymodbus.client import ModbusSerialClient
 
-das = ModbusTcpClient(
-    host='10.130.1.112',      # ICP DAS device IP
-    port=10001,               # Default Modbus TCP port
-    framer=ModbusRtuFramer,   # Use RTU framing over TCP,
+SERIAL = '/dev/ttyAMA3'
+# SERIAL = '/dev/ttyUSB0'
+BAUDRATE = 115200
+
+icpdas = ModbusSerialClient(
+    port=SERIAL,           # последовательный порт
+    baudrate=BAUDRATE,    # скорость передачи
+    bytesize=8,           # 8 бит данных
+    parity='N',           # без четности
+    stopbits=1,           # 1 стоп-бит
+    framer=ModbusRtuFramer,
     timeout=1
 )
 
-assert (das.connect())
+print(icpdas)
+assert (icpdas.connect())
 
-rs0 = ModbusTcpClient(
-    host='10.130.1.111',      # ICP DAS device IP
-    port=10002,               # Default Modbus TCP port
-    framer=ModbusRtuFramer,   # Use RTU framing over TCP,
-    timeout=1
-)
+# icpdas.read_holding_registers(slave=131, address=0, count=1).registers
+# icpdas.read_holding_registers(slave=51, address=0, count=1).registers
 
-assert (rs0.connect())
+# icpdas.write_register(slave=131, address=0, value=0)  # off
+# icpdas.write_register(slave=131, address=0, value=1)  # on
 
-def PRW1_monitor():
-    while (True):
-        u, i = rs0.read_holding_registers(slave=1, address=1, count=2).registers
+
+TIMEGAP = 11e-3
+print(f'TIMEGAP:{TIMEGAP*1e3}ms')
+
+def fault_maker():
+    while True:
+        ts = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        # DRS polling
+        u = icpdas.read_input_registers(
+            slave=131, address=0x50, count=1).registers[0]
         u /= 1e1
-        i /= 1e3
-        pw = u * i
-        print(f'u:{u} i:{i} pw:{pw:.2f}')
-        time.sleep(1)
+        v, i, t = \
+            icpdas.read_input_registers(
+                slave=131, address=0x60, count=3).registers
+        v /= 1e2
+        i /= 1e2
+        t /= 1e1
+        print(f'{ts} {"drs":<8} u:{u} v:{v} i:{i} t:{t}')
+        time.sleep(TIMEGAP)
+        # ESPhome polling
+        di = \
+            icpdas.read_holding_registers(
+                slave=51, address=0, count=1).registers[0]
+        print(f'{ts} {"esphome":<8} di:{di}')
+        time.sleep(TIMEGAP)
 
-PRW1_monitor()
-
-
-tcp = ModbusTcpClient(
-    host='10.130.1.44',           # ICP DAS device IP
-    port=502,                     # Default Modbus TCP port
-    # framer=ModbusSocketFramer,  # Use RTU framing over TCP,
-    timeout=1
-)
-
-assert (tcp.connect())
-
-tcp.read_coils(slave=44,address=0,count=1)
-
-def scan_WBUPS():
-    for id in range(1, 254 + 1):
-        try:
-            print(id, das.read_holding_registers(
-                slave=id, address=0, count=1).registers)
-        except AttributeError:
-            pass
-
-
-scan_WBUPS()
-
-# while (True):
-print(das.read_coils(slave=43, address=0, count=1).registers)
-n = 0
-while (True):
-    print(n); n += 1
-    try: das.read_discrete_inputs(slave=43, address=0, count=1)
-    except e: print(e)
-    # time.sleep(1)
-
-
-def Koncony_read():
-    while (True):
-        print(das.read_discrete_inputs(slave=43, address=0, count=1).bits)
-        time.sleep(1)
-Koncony_read()
-
-das.read_discrete_inputs(slave=43, address=0, count=1).bits
-
-das.write_coils(slave=43, address=0, values=[True])
-das.write_coil(slave=43, address=0, value=False)
-
-tcp.read_discrete_inputs(slave=43, address=0, count=1).bits
-tcp.write_coil(slave=43, address=0, value=True)
-
-def Koncony_coil():
-    das.write_coil(slave=43, address=0, value=True)
-    time.sleep(.1)
-    das.write_coil(slave=43, address=0, value=False)
-Koncony_coil()
-
-print(tcp.read_discrete_inputs(slave=43, address=0, count=1))
-
-das.close()
+fault_maker()
