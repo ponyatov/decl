@@ -1,7 +1,7 @@
 import time
 import datetime as dt
 from pymodbus.transaction import ModbusRtuFramer
-from pymodbus.client import ModbusSerialClient
+from pymodbus.client import ModbusTcpClient
 
 IP = '10.130.2.112' # icpdas
 PORT = 10001
