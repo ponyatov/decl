@@ -41,9 +41,5 @@ main/
 idf_component_register(SRC_DIRS "." INCLUDE_DIRS ".")
 ```
 
-## sdkconfig
+![[sdkconfig]]
 
-
-```sh
-idf.py menuconfig
-```
