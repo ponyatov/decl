@@ -29,4 +29,5 @@ hw esp32c6: esp32c {}
 - [[decl/esp/udev-rules]]
 - [[decl/esp/idf]]
 - [[decl/esp/files]]
+- [[decl/esp/hello]]
 - [[decl/esp/cmake]]

@@ -14,5 +14,36 @@ CMakeLists.txt
 
 (c) {AUTHOR} {EMAIL} {YEAR} {LICENSE}
 
-github: github: https://github.com/ponyatov/decl/{APP}
+github: https://github.com/ponyatov/decl/{APP}
+```
+
+## .gitignore
+
+```
+build/
+!.gitignore
+```
+
+## main
+
+[[ESP-IDF]] require `main` component in a project:
+
+```
+main/
+	CMakeLists.txt
+	main.cpp
+	main.hpp
+```
+
+### `main/CMakeLists.txt`
+
+```
+idf_component_register(SRC_DIRS "." INCLUDE_DIRS ".")
+```
+
+## sdkconfig
+
+
+```sh
+idf.py menuconfig
 ```
