@@ -1,10 +1,9 @@
 # Pattern Matching
 
 [[decl/core/Pattern Matching|Pattern Matching]] (сопоставление с образцом) — это 
-- способ проверить значение (выбрав первую подходящую ветку сверху вниз)
-- извлечь из него данные за один шаг ()
-- и выполнить код ветки
-	- вычислить выражение в ветке, и вернуть в качестве значения match-выражения
+- check a value against patterns (top to bottom, first match wins)
+- extract data from complex structures in one step
+- evaluate expression for matched branch and return its value as match result
 
 Вместо цепочки `if` или мотни из if-else на несколько экранов вы пишете одно выражение `match`:
 
@@ -18,9 +17,7 @@ match value
 
 `->` аналогична такому же элементу в синтаксисе определения функции, и обозначает return: возврат результата вычисления правой части ветки match-выражения
 
-## Зачем это нужно?
-
-### портянки if/else
+## легко читаемая замена портянки if/else
 
 ```decl
 fn age years:uint -> str {
@@ -60,8 +57,6 @@ fn age years:uint -> str {
 }
 ```
 
-
-
 ### подстановка через переменные
 
 Когда вы пишете `match выраражение`, вы можете **захватить** само значение выражения, и его компоненты (для нескалярных данных) в локальные переменные используя шаблоны, и сразу использовать их:
@@ -73,7 +68,9 @@ match expr
 | b:bool -> 'boolean {b}'
 | _ -> '{_} is something strange'
 ```
- здесь нужно отличать:
+
+## `_`
+
  - `_` в левой части ветви является аналогом `case {default:}` в других языках:
 	 - ветка выбора по умолчанию, если другие варианты не подошли
  - `_` в правой части соответствует значению `expr`
@@ -88,4 +85,130 @@ match tmp
 | 0 -> "zero"
 | n:int -> "number: " + n
 | _ -> 'какая-то неизвестная фигня: ' + _
+```
+
+## Type Patterns
+
+process value in dependent of its type:
+
+```decl
+match expr
+| n:int   -> "{n} is number"
+| s:str   -> '{s} is a string'
+| b:bool  -> 'boolean {b}'
+| _       -> '{_} is something strange'
+```
+
+## Range Patterns
+
+```decl
+fn age years:uint -> str {
+    match years
+    | 0..2   -> "Baby"
+    | 3..11  -> "Child"
+    | 12..17 -> "Teen"
+    | 18..59 -> "Adult"
+    | _      -> "Senior"
+}
+```
+
+## Guard Clauses
+
+- `when` keyword expands pattern with boolean expression for conditional match
+
+```decl
+match value
+| n when n < 0     -> "negative"
+| n when n == 0    -> "zero"
+| n when n > 0     -> "positive"
+```
+
+## Destructuring
+
+- expand composite data into separate elements
+
+### [[decl/core/tuple|tuple]]
+
+```decl
+let point = (10, 20)
+match point
+| (0,0)      -> "origin"
+| (x,0)      -> "on X axis at {x}"
+| (0,y)      -> "on Y axis at {y}"
+| (x,y)      -> "point ({x},{y})"
+```
+
+### [[decl/core/vec|vector]]
+
+```decl
+match vec
+| [||]          -> "empty"
+| [| x |]       -> "single: {x}"
+| [| x ; y |]   -> "pair: {x} {y}"
+| [| x ; .. |]  -> "starts with {x}"
+```
+
+### Class Fields
+
+```decl
+class Point { x:float y:float }
+
+match p:Point
+| {x=0,y=0} -> "origin"
+| {x=0}     -> "on Y axis"
+| {y=0}     -> "on X axis"
+| {x,y}     -> "({x},{y})"
+```
+
+## `match` as Expression
+
+Every match returns a value, usable anywhere:
+
+```decl
+let description = match code
+| 200 -> "OK"
+| 404 -> "Not Found"
+| _   -> "Error {code}"
+```
+
+## matching `let`
+
+`var`/`let` can also use pattern matching for destructuring and binding variables in one step.
+
+```decl
+let (x, y) = (10, 20)                  // x=10, y=20
+let [| a ; b ; c |] = [| 1 ; 2 ; 3 |]  // a=1, b=2, c=3
+let {name, age} = person               // extracts fields from class/object
+```
+
+Ignoring Values with `_`
+
+```decl
+let (x, _) = (10, 20)       // x=10, second ignored
+let (_, _, z) = (1, 2, 3)   // z=3
+```
+
+Class Field Extraction
+
+```decl
+class Person {
+    name:str
+    age:int
+    city:str
+}
+
+// in place of init() method we can construct in F#/OCaml style:
+let alice = Person { name="Alice" age=30 city="NYC" }
+
+// extract specific fields
+let {name, age} = alice     // name="Alice", age=30
+let {city} = alice          // city="NYC"
+```
+
+with Type Annotations
+
+```decl
+let x:int = 42
+let (a:float, b:float) = (3.14, 2.71)
+let {name:str, age:int} = person
 ```

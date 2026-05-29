@@ -12,19 +12,7 @@ fn optional_name [arguments] -> return_type {
 }
 ```
 
-## Unified Call Syntax (UFCS)
-
-UFCS is a feature that blurs the line between free functions (not tied to a type) and member methods: it allows you to call a function using the dot notation commonly associated with object-oriented programming without need function to be a class or trait/type method:
-
-- any free function can be called as a method
-	- in case passing object as a first argument
-	- and other optional arguments
-
-`object.do(someting) <~> do(&object,something)`
-
-- enables natural **method chaining**, allowing complex operations to be written as a clear, linear dotted pipeline (e.g., `data.filter().map().sort()`) instead of nested function calls
-- Programmers can use their IDE's code completion after typing a dot (`.`) to see all applicable functions, including free functions that take the object as their first argument
-
+## [[Unified Call Syntax]] (UFCS)
 ## no-parens
 
 > DECL HAS NO PARENS!!! `()` in function/call syntax -- used only for expression or operand grouping
@@ -45,6 +33,6 @@ obj.value = 123 // set .value field with .value(n:int) setter
 obj.scale 1.5   // no-parens call
 ```
 
-## functional polymorphism
+## [[Multiple Dispatch]]
 
 we can have multiple functions definition with the same name, which will be selected by arguments & return type pattern matching
