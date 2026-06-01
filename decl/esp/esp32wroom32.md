@@ -4,7 +4,7 @@
 hw esp32wroom32: esp32 {
 
 	// board identification
-	board   = 'ESP32 WROOM-32'
+	board   = 'ESP32-WROOM-32'
 	vendor  = 'Espressif'
     variant = 'ESP32-D0WDQ6'
 
@@ -12,6 +12,11 @@ hw esp32wroom32: esp32 {
     ram        = 520<Kb>        // SRAM total
     flash      = 4<Mb>          // onboard SPI flash
     psram      = 0<Kb>          // no PSRAM on WROOM-32
+    
+    usb = {
+	    cp210x : { vid:0x10C4 pid:0xEA60 }
+	    ch340  : { vid:0x1A86 pid:0x7523 }
+    }
 	
     // features
     features   = [
