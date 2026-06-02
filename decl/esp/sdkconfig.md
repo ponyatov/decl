@@ -28,14 +28,13 @@ app hello {
 
 ## Build type
 
-- [[APP_BUILD_TYPE_APP_2NDBOOT]]=n
 - [[CONFIG_APP_BUILD_TYPE_RAM]]=y
 	- экспериментальный режим сборки в ESP-IDF, при котором приложение целиком загружается и выполняется из оперативной памяти (RAM), в обход флеш-памяти
 	- множественная итеративная отладка, тестирование без износа флеш-памяти
 - [[APP_BUILD_TYPE_PURE_RAM_APP]]=y
 	- включено для учебных и демо программ, которые запускаются с ПК, и 
 	- не требуют хранения данных для приложения на ESP
-- [[esp/APP_NO_BLOBS]]=y
+- [[CONFIG_APP_NO_BLOBS]]=y
 	- disables the linking of binary libraries in the application build
 	- Wi-Fi/Bluetooth will not work: it's ok for tiny apps w/o networking
 
@@ -43,17 +42,29 @@ app hello {
 
 ## Bootloader config
 
+- [[BOOTLOADER_COMPILER_OPTIMIZATION_SIZE]]=y
 - Log
 	- [[BOOTLOADER_LOG_LEVEL]]_VERBOSE=y
-
 
 ## Security features
 ## Application manager
 ## Serial flasher config
 ## Partition Table
+
+- [[PARTITION_TABLE_SINGLE_APP]]=y
+
 ## Compiler options
+
+- [[COMPILER_OPTIMIZATION_DEBUG]]=y
+- [[COMPILER_OPTIMIZATION_ASSERTIONS_ENABLE]]=y
+- COMPILER_CXX_EXCEPTIONS=n
+- COMPILER_CXX_RTTI=n
+
 ## Component config
+
+- CONFIG_ETH_ENABLED=y
+- CONFIG_ESP_WIFI_ENABLED=n
+
 ## experimental features
-```
-IDF_EXPERIMENTAL_FEATURES=n
-```
+
+- IDF_EXPERIMENTAL_FEATURES=n

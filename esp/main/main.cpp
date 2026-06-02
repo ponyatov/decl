@@ -1,5 +1,5 @@
 #include <cstdio>
 
 extern "C" void app_main(void) {  //
-    printf("Hello RAM!\n");
+    printf("Hello World!\n");
 }
