@@ -1,6 +1,6 @@
 ```decl
 // interactive or display-only form
-class Form: GUI {
+gui Form {
 	title = default<?name|''>
 	theme = enum {
 		default<dark>    // dark theme preferred

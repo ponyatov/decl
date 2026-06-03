@@ -1,3 +1,7 @@
+# [[decl/gui/counter|counter]]
+## compiles to HTML/JS
+
+```html
 <!doctype html>
 <html lang="en">
     <head>
@@ -6,21 +10,14 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, user-scalable=no"
         />
-        <title>VA‑Calculator | decl reimplemented</title>
+        <title>Counter</title>
     </head>
+
     <style>
         body {
             background: #222;
             color: lightgreen;
             font-family: monospace;
-        }
-
-        #calculator {
-            width: 240px;
-            height: 320px;
-            border: 1px solid darkslateblue;
-            background: #111;
-            text-align: left;
         }
 
         #display {
@@ -30,81 +27,21 @@
             font-size: 5mm;
         }
 
-        #state {
-            color: orange;
-            text-align: left;
-        }
-
-        #keypad {
-            text-align: center;
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: repeat(5, 1fr);
-            gap: 3px;
-        }
-
-        button {
-            font-size: 5mm;
-        }
-
-        #counter {
-            position: absolute;
-            bottom: 0;
-        }
     </style>
+
     <body>
-        <div id="calculator">
-            calculator
+        <div id="counter">
+            counter
             <div id="display">display</div>
-            <div id="state">state</div>
-            <div id="keypad">
-                <button id="ac">AC</button>
-                <button id="on">OFF</button>
-                <button id="sqrt">√</button>
-                <button id="perc">%</button>
-                <button id="mc">MC</button>
-
-                <button id="7">7</button>
-                <button id="8">8</button>
-                <button id="9">9</button>
-                <button id="div">/</button>
-                <button id="mx">M</button>
-
-                <button id="4">4</button>
-                <button id="5">5</button>
-                <button id="6">6</button>
-                <button id="mul">*</button>
-                <button id="mm">M-</button>
-
-                <button id="1">1</button>
-                <button id="2">2</button>
-                <button id="3">3</button>
-                <button id="sub">-</button>
-                <button id="mp">M+</button>
-
-                <button id="0">0</button>
-                <button id="dot">.</button>
-                <button id="neg">/-/</button>
-                <button id="add">+</button>
-                <button id="eq">=</button>
             </div>
         </div>
-
-        <pre id="counter">
-model Counter {
-    seconds:uint = 0
-    timer 1s { seconds++ }
-}
-
-form Counter {
-    init model { self.model = model; model.seconds.get = this.update }
-    update { log &lt;&lt; self.model }
-}
-        </pre>
     </body>
-    <script>
+
+    <script/>
+</html>
+```
+
+```js
         class Actor {
             constructor(name) {
                 this.name = name || this.constructor.name;
@@ -171,5 +108,4 @@ form Counter {
             const view = new CounterView(model);
             model.send('start');
         });
-    </script>
-</html>
+```

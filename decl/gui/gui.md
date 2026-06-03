@@ -16,6 +16,8 @@ class GUI {}
 ```
 
 ![[decl/gui/form]]
+![[decl/gui/label]]
+![[decl/gui/text]]
 ![[decl/gui/theme]]
 ![[decl/gui/layout]]
 ![[decl/gui/mvc|mvc]]

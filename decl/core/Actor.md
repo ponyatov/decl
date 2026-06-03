@@ -29,3 +29,5 @@ bob ! "i'm system thread"   // send message to bob from current code owner
 ```
 
 ## [[decl/core/pubsub]]
+
+## [[decl/core/group]]

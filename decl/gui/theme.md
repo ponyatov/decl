@@ -1,5 +1,6 @@
 ```decl
-class Theme: GUI {
+gui Theme {
+	name:str
 	font: {
 		size: min<2mm>      // all texts must be readable
 		family: monospace   // make the GUI close to console TUI

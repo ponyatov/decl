@@ -5,7 +5,7 @@
 
 ```decl
 /// compiles to `class NameModel`
-class Model: Actor {}
+class Model: Actor { view = undef }
 
 /// compiles to `class NameView`
 class View: Actor,GUI {
@@ -16,24 +16,4 @@ class View: Actor,GUI {
 }
 ```
 
-## demo code with visual timer model
-
-target: single page HTML with embedded JS
-
-```decl
-model Counter {
-	seconds:uint = 0
-	timer 1s { seconds++ } // change internal state
-}
-
-form Counter  {
-	init model {
-		self.model = model
-		model.seconds.set = this.update // subscribe to model update
-	}
-	
-	update {
-		self.display = self.model.seconds  // dump model state
-	}
-}
-```
+- [[decl/gui/counter]]
