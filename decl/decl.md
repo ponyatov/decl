@@ -61,3 +61,7 @@ Instead of traditional compilation, `decl` uses **literal programming** prin
 - Every `.md` file is a `decl` module (Markdown + Decl code)
 - AI-assisted translation generates human-readable **Embedded C++**
 - Documentation and code live together
+
+## target platforms/languages
+
+- [[decl/js/decl]]

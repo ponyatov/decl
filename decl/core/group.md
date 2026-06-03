@@ -25,3 +25,5 @@ glob all = Group<*>         // all actors in a system
 workers.idles!shutdown  // free resources used by unloaded workers
 all.random!kill         // test system for faults
 ```
+
+- [[decl/core/pubsub|pubsub]]

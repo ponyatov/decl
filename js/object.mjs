@@ -1,12 +1,11 @@
-# object
-## translation to JS
-
-- [[decl/js/error]]
-```js
 /**
  * @file object.mjs
  * @brief Root Object class implementation for Decl runtime
+ * @author Dmitry Ponyatov <dponyatov@gmail.com>
+ * @date 03/06/2026
  */
+
+import { NameError } from './error.mjs';
 
 /**
  * @class Object
@@ -30,9 +29,11 @@ export class Object {
          *              - must be valid identifier in any target language
          *              - no local language chars, unprintables, operators etc
          */
+        if (name !== null && !/^[_a-zA-Z][_a-zA-Z0-9]*$/.test(name)) {
+            throw new NameError();
+        }
         this.name = name;
     }
 }
 
 export default Object;
-```
