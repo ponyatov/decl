@@ -1,5 +1,14 @@
 # Actor Model
 
+In [[decl/js/decl|decl]] language any [[decl/core/Object|Object]] almost equal to [[decl/core/Actor|Actor]]:
+- any method can be run
+	- sync method call: `object.method [arguments]`
+	- async message send: `object!method [arguments]`
+
+For realtime performance:
+- any message processing must be as small and short as possible
+- split processing into multiple self-sends if you can
+
 ![[decl/core/Message]]
 
 ```decl

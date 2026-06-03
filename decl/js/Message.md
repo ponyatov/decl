@@ -8,6 +8,7 @@
  */
 
 import { Object } from './object.mjs';
+import { NameError } from './error.mjs';
 
 /**
  * @class Message
@@ -38,4 +39,6 @@ export class Message extends Object {
         this.data = data;
     }
 }
+
+export default { Message };
 ```
