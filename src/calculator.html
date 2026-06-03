@@ -15,7 +15,7 @@
             font-family: monospace;
         }
 
-        .calculator {
+        #calculator {
             width: 240px;
             height: 320px;
             border: 1px solid darkslateblue;
@@ -23,19 +23,19 @@
             text-align: left;
         }
 
-        .display {
+        #display {
             background: #142;
             color: yellow;
             text-align: right;
             font-size: 5mm;
         }
 
-        .state {
+        #state {
             color: orange;
             text-align: left;
         }
 
-        .keypad {
+        #keypad {
             text-align: center;
             width: 100%;
             height: 100%;
@@ -48,13 +48,18 @@
         button {
             font-size: 5mm;
         }
+
+        #counter {
+            position: absolute;
+            bottom: 0;
+        }
     </style>
     <body>
-        <div class="calculator">
+        <div id="calculator">
             calculator
-            <div class="display">display</div>
-            <div class="state">state</div>
-            <div class="keypad">
+            <div id="display">display</div>
+            <div id="state">state</div>
+            <div id="keypad">
                 <button id="ac">AC</button>
                 <button id="on">OFF</button>
                 <button id="sqrt">√</button>
@@ -86,6 +91,86 @@
                 <button id="eq">=</button>
             </div>
         </div>
+
+        <pre id="counter">
+model Counter {
+    seconds:uint = 0
+    timer 1s { seconds++ }
+}
+
+form Counter {
+    init model { self.model = model; model.seconds.get = this.update }
+    update { log &lt;&lt; self.model }
+}
+        </pre>
     </body>
-    <script></script>
+    <script>
+        class Actor {
+            constructor(name) {
+                this.name = name || this.constructor.name;
+                this.mailbox = []; // message queue
+            }
+
+            // string representation for logging
+            toString() {
+                return `${this.name}[${this.mailbox.length}]`;
+            }
+
+            // send async message (push + schedule dispatch)
+            send(msg) {
+                console.log(`${this}.send ${msg}`);
+                this.mailbox.push(msg);
+                // microtask dispatch (non-blocking actor running)
+                // Promise.resolve().then(() => this.dispatch());
+                this.dispatch();
+            }
+
+            // process messages if any
+            dispatch() {
+                while (this.mailbox.length > 0)
+                    this.process(this.mailbox.shift());
+            }
+
+            // process single message: override in subclass
+            process(msg) {
+                console.log(`${this}.process ${msg}`);
+            }
+        }
+
+        class CounterModel extends Actor {
+            constructor() {
+                super();
+                this.seconds = 0;
+            }
+
+            // any message starts timer
+            process(msg) {
+                console.log(`${this}.process ${msg}`);
+                this.timer_1s = setInterval(() => {
+                    this.seconds++;
+                    this.view.send('update');
+                });
+            }
+        }
+
+        class CounterView extends Actor {
+            constructor(model) {
+                super();
+                this.model = model;
+                model.view = this;
+                this.display = document.getElementById('display');
+            }
+
+            // any message runs update
+            process(msg) {
+                this.display.innerText = `${this.model.seconds}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const model = new CounterModel();
+            const view = new CounterView(model);
+            model.send('start');
+        });
+    </script>
 </html>
