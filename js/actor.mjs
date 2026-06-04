@@ -66,6 +66,7 @@ export class Actor extends Object {
     ping(msg) {
         this.send(msg.src, 'pong');
     }
+
     pong(msg) {
         console.log(msg);
     }
@@ -73,8 +74,8 @@ export class Actor extends Object {
 
 export default { Actor };
 
-let src = new Actor('src');
-let dst = new Actor('dst');
-console.log(src);
-console.log(dst);
-src.send(dst, 'pingz');
+// let src = new Actor('src');
+// let dst = new Actor('dst');
+// console.log(src);
+// console.log(dst);
+// src.send(dst, 'ping');
