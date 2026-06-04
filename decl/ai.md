@@ -44,3 +44,6 @@
 	- comments must be in jsdoc
 - TS: TypeScript
 	- comments must be in tsdoc
+
+
+[[decl/ts/binex]]
