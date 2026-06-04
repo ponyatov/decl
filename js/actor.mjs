@@ -24,9 +24,13 @@ export class Actor extends Object {
         this.mailbox = [];
     }
 
+    toString() {
+        return `${this.name}[${this.mailbox}]`;
+    }
+
     push(msg) {
         this.mailbox.push(msg);
-        this.dispatch();
+        setImmediate(() => this.dispatch());
     }
 
     pop() {
@@ -37,14 +41,21 @@ export class Actor extends Object {
         dst.push(new Message(this, dst, selector, data));
     }
 
+    dispatch() {
+        while (this.mailbox.length > 0) {
+            let msg = this.pop();
+            this.process(msg);
+        }
+    }
+
     /**
      * @brief Override process(msg) for message handling
      * @param {Message} msg - Message to process
      * @description
-     * Performance rules:
-     * - Keep process() as short and fast as possible
-     * - Split long work into multiple self-sends if you can
-     * - Never block in process()
+     * performance rules:
+     * - keep process() as short and fast as possible
+     * - split long work into multiple self-sends if you can
+     * - never block in process()
      */
     process(msg) {
         console.log(`${this}.process ${msg}`);
@@ -53,4 +64,8 @@ export class Actor extends Object {
 
 export default { Actor };
 
-console.log(new Actor());
+let src = new Actor('src');
+let dst = new Actor('dst');
+console.log(src);
+console.log(dst);
+src.send(dst, 'ping');

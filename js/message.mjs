@@ -36,6 +36,10 @@ export class Message extends Object {
         this.sel = sel;
         this.data = data;
     }
+
+    toString() {
+        return `{src:${this.src} dst:${this.dst} id:${this.id} sel:${this.sel} ${this.data ? this.data : ''}}`;
+    }
 }
 
 export default { Message };

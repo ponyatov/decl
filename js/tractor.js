@@ -4,64 +4,6 @@
 /// @author Dmitry Ponyatov <dponyatov@gmail.com>
 /// @date 22/05/2026 17:06
 
-/// @brief any message sent between actors (directly or via topics)
-class Message {
-    static #id = 0; // static counter for unique message IDs generation
-
-    constructor(src, dst, data) {
-        this.src = src; ///
-        this.dst = dst; ///
-        this.id = Message.#id++;
-        this.ts = Date.now();
-        this.data = data;
-    }
-
-    toString() {
-        return `${this.ts} ${this.src}->${this.dst} ${this.data}`;
-    }
-}
-
-class Actor {
-    constructor(name) {
-        this.name = name;
-        this.mailbox = [];
-    }
-
-    toString() {
-        return `${this.name}[${this.mailbox.length}]`;
-    }
-
-    push(msg) {
-        this.mailbox.push(msg);
-        this.dispatch();
-    }
-
-    pop() {
-        return this.mailbox.shift();
-    }
-
-    send(dst, data) {
-        dst.push(new Message(this, dst, data));
-    }
-
-    dispatch() {
-        while (this.mailbox.length > 0) {
-            let msg = this.pop();
-            this.process(msg);
-        }
-    }
-
-    // override with real processing code
-    process(msg) {
-        console.log(`${this} got ${msg}`);
-    }
-}
-
-let a = new Actor('alice');
-let b = new Actor('bob');
-console.log(`${a} -> ${b}`);
-a.send(b, 'hello');
-// console.log(`${a} -> ${b}`);
 
 class TopicExists extends Error {}
 
