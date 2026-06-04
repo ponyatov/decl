@@ -35,13 +35,12 @@ export class Object {
         this.name = name;
     }
 
+    dump = []; // object keys list to dump
+
     toString() {
         const fields = {};
-        for (const key of Object.keys(this)) {
-            let value = this[key];
-            fields[key] = `${value}`;
-        }
-        return `${this.constructor.name}:${this.name} {${fields}}`;
+        for (const key of this.dump) fields[key] = `${this[key]}`;
+        return `${this.constructor.name}:${this.name} ${JSON.stringify(fields)}`;
     }
 }
 

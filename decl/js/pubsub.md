@@ -11,6 +11,7 @@
  */
 
 import { Object } from './object.mjs';
+import mqtt from 'mqtt';
 
 /**
  * @class Broker
@@ -18,16 +19,24 @@ import { Object } from './object.mjs';
  * @description Manages topics and routes messages to subscribers
  */
 export class Broker extends Object {
-    static glob = null;
+    static glob = null; // system-wide broker (singleton)
+    #mqtt = null;       // MQTT server connection
 
     constructor(ip = 'localhost', port = 1883) {
         super('mqtt');
-        this.connect = {
-            ip: ip,
-            port: port
-        };
-        this.topic = new Map();
         Broker.glob = this;
+        this.topic = new Map();
+        this.ip = ip;
+        this.port = port;
+        this.protocol = 'mqtt';
+        let url = `${this.protocol}://${this.ip}:${this.port}`;
+        this.#mqtt = mqtt.connect(url);
+        this.#mqtt.on('connect', () => {
+            this.connect();
+        });
+        this.#mqtt.on('message', (topic, msg) => {
+            this.message(topic, msg);
+        });
     }
 
     /**
@@ -35,6 +44,15 @@ export class Broker extends Object {
      */
     push(topic) {
         this.topic[topic.name] = topic;
+    }
+
+    connect() {
+        console.log(this.connect);
+        this.#mqtt.subscribe('#');
+    }
+
+    message(topic, msg) {
+        console.log(this.name, this.message, topic, msg);
     }
 }
 
@@ -64,4 +82,5 @@ console.log(hello);
 ```
 
 
-[[decl/hw/dc]]
+- [[decl/hw/dc]]
+- [[decl/js/Object]]

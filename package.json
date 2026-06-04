@@ -8,8 +8,6 @@
     "scripts": {
         "start": "nodejs js/decl.mjs",
         "watch": "nodemon js/decl.mjs",
-        "mqtt": "nodemon js/mqtt.js",
-        "message": "nodemon js/message.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [

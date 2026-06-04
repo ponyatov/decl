@@ -6,7 +6,7 @@
  */
 
 import { Object } from './object.mjs';
-import { NameError } from './error.mjs';
+import mqtt from 'mqtt';
 
 /**
  * @class Broker
@@ -14,23 +14,45 @@ import { NameError } from './error.mjs';
  * @description Manages topics and routes messages to subscribers
  */
 export class Broker extends Object {
-    static glob = null;
+    static glob = null; // system-wide broker (singleton)
+    #mqtt = null; // MQTT server connection
 
     constructor(ip = 'localhost', port = 1883) {
         super('mqtt');
-        this.connect = {
-            ip: ip,
-            port: port
-        };
-        this.topic = new Map();
         Broker.glob = this;
+        this.topic = new Map();
+        // config
+        this.ip = ip;
+        this.port = port;
+        this.protocol = 'mqtt';
+        // connect
+        let url = `${this.protocol}://${this.ip}:${this.port}`;
+        this.#mqtt = mqtt.connect(url);
+        this.#mqtt.on('connect', () => {
+            this.connect();
+        });
+        this.#mqtt.on('message', (topic, msg) => {
+            this.message(topic, msg);
+        });
     }
+
+    dump = ['ip', 'port'];
 
     /**
      * @brief Register a new topic with the broker
      */
     push(topic) {
         this.topic[topic.name] = topic;
+        this.#mqtt.publish(`${topic.name}/new`, `${topic}`);
+    }
+
+    connect() {
+        console.log(this.connect);
+        this.#mqtt.subscribe('#');
+    }
+
+    message(topic, msg) {
+        console.log(this.name, this.message, topic, msg);
     }
 }
 
@@ -48,7 +70,8 @@ export class Topic extends Object {
 
 export default { Broker, Topic };
 
-let mqtt = new Broker();
-console.log(mqtt);
+// $ mosquitto_sub -h localhost -t "hello"
+let broker = new Broker();
+console.log(`${broker}`);
 let hello = new Topic('hello');
-console.log(hello);
+console.log(`${hello}`);
