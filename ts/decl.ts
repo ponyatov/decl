@@ -7,3 +7,5 @@
  */
 
 export * from './comment.ts';
+export * from './error.ts';
+export * from './object.ts';
