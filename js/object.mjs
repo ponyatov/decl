@@ -34,6 +34,15 @@ export class Object {
         }
         this.name = name;
     }
+
+    toString() {
+        const fields = {};
+        for (const key of Object.keys(this)) {
+            let value = this[key];
+            fields[key] = `${value}`;
+        }
+        return `${this.constructor.name}:${this.name} {${fields}}`;
+    }
 }
 
 export default Object;

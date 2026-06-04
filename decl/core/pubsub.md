@@ -1,8 +1,11 @@
 # pubsub
 ## Pub/Sub extension for Actor model
 
+## Broker
+
 ```decl
 class Broker: Server {
+	static glob:Broker            // system-wide message broker (singleton)
 	connect: {                         // connection config
 		ip       = localhost
 		port     = 1883
@@ -12,9 +15,14 @@ class Broker: Server {
 
 	topic:map<name, topic>             // model: topics registry
 }
+```
 
+## Topic
+
+- proxy [[decl/core/group|group]] on external [[#Broker]]
+
+```decl
 class Topic:Group {
-	static broker:Broker               // system-wide message broker
 	
 	init name { broker.push self }     // autoregister new topic
 	
