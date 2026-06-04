@@ -17,26 +17,60 @@ import type { uint } from './types.js';
  *   console.log(new Array<u8>(size)); // allocate fixed buffer
  */
 export class Array<T> {
+    [index: uint]: T;
+
     readonly len: uint;
     private _data: T[];
-    [index: uint]: T;
+
+    /// @section constructor
 
     /**
      * @brief Create new fixed-size array
-     * @param size - Number of elements (must be compile-time constant)
+     * @param arg - Number of elements (must be compile-time constant)
+     *        arg - initializer array
      */
-    constructor(len: uint) {
-        this.len = len;
-        this._data = new globalThis.Array<T>(len);
+    constructor(arg: uint | Iterable<T>) {
+        if (typeof arg === 'number') {
+            this.len = arg;
+            this._data = new globalThis.Array<T>(this.len);
+        } else {
+            this._data = globalThis.Array.from(arg);
+            this.len = this._data.length;
+        }
     }
 
     /// @brief size in bytes (unapplicable in TS/JS)
     // fn size -> uint
 
-    *[Symbol.iterator](): Iterator<T> {
+    /// @section accessor
+
+    get(index: uint): T | undefined {
+        return this._data[index];
+    }
+
+    set(index: uint, value: T): void {
+        this._data[index] = value;
+    }
+
+    /// @section iterator
+
+    *[Symbol.iterator](): IterableIterator<T> {
         for (let i = 0; i < this.len; i++) yield this._data[i];
+    }
+
+    *keys(): IterableIterator<uint> {
+        for (let i = 0; i < this.len; i++) {
+            yield i;
+        }
+    }
+
+    *entries(): IterableIterator<[uint, T]> {
+        for (let i = 0; i < this.len; i++) {
+            yield [i, this._data[i]];
+        }
     }
 }
 
 console.log(new Array<uint>(11));
 for (let i of new Array(4)) console.log(i);
+for (let i of new Array(4).keys()) console.log(i);
