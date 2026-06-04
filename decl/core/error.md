@@ -5,4 +5,4 @@ class Error
 class NameError: Error
 ```
 
-- [[decl/js/error]]
+- [[decl/js/Error]]

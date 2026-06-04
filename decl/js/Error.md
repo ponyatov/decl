@@ -1,8 +1,10 @@
+# [[decl/core/error]]
+## compiled to JS
+
+```js
 /**
  * @file error.mjs
  * @brief Error classes for Decl runtime
- * @author Dmitry Ponyatov <dponyatov@gmail.com>
- * @date 03/06/2026
  */
 
 /**
@@ -41,3 +43,4 @@ export class SelectorError extends Error {
 }
 
 export default { Error, NameError, SelectorError };
+```

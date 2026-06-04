@@ -1,7 +1,7 @@
 # object
 ## translation to JS
 
-- [[decl/js/error]]
+- [[decl/js/Error]]
 ```js
 /**
  * @file object.mjs

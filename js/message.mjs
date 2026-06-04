@@ -31,7 +31,7 @@ export class Message extends Object {
         this.id = Message.#id++;
         this.ts = Date.now();
         if (sel !== null && !/^[_a-zA-Z][_a-zA-Z0-9]*$/.test(sel)) {
-            throw new NameError();
+            throw new NameError(sel);
         }
         this.sel = sel;
         this.data = data;
