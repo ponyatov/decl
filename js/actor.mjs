@@ -7,7 +7,7 @@
 
 import { Object } from './object.mjs';
 import { Message } from './message.mjs';
-import { SelectorError } from './error.mjs';
+import { SelectorError } from './misc/error.mjs';
 
 /**
  * @class Actor

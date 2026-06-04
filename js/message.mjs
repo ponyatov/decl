@@ -6,7 +6,7 @@
  */
 
 import { Object } from './object.mjs';
-import { NameError } from './error.mjs';
+import { NameError } from './misc/error.mjs';
 
 /**
  * @class Message
