@@ -7,8 +7,10 @@
         "rootDir": "./ts",
         "strict": true,
         "esModuleInterop": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "removeComments": false,
+        "newLine": "lf"
     },
-    "include": ["ts/*.ts"],
+    "include": ["ts/**/*.ts"],
     "exclude": ["node_modules"]
 }
