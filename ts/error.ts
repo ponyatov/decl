@@ -1,5 +1,5 @@
 /**
- * @file error.mjs
+ * @file error.ts
  * @brief Error classes for Decl runtime
  * @author Dmitry Ponyatov <dponyatov@gmail.com>
  * @date 04/06/2026

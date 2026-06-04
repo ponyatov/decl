@@ -70,7 +70,3 @@ export class Array<T> {
         }
     }
 }
-
-console.log(new Array<uint>(11));
-for (let i of new Array(4)) console.log(i);
-for (let i of new Array(4).keys()) console.log(i);
