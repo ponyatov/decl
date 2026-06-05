@@ -7,6 +7,7 @@
 
 import { Message } from './message.ts';
 import { SelectorError, NoMessageError } from './error.ts';
+import { str } from './types.ts';
 
 export class Actor extends Object {
     mailbox: Message[];
@@ -28,6 +29,11 @@ export class Actor extends Object {
         }
         return msg;
     }
+
+    send(dst: Actor, selector: string, data?: any) {
+        dst.push(new Message(this, dst, selector, data));
+    }
+
     /**
      * @brief Dispatch and process all messages in mailbox
      * @description
