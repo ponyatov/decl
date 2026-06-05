@@ -17,6 +17,8 @@ export class Object {
     /**
      * @brief Optional object name
      * @details Must be valid identifier in any target language:
+     *          Pattern: r'[_a-zA-Z][_a-zA-Z0-9]*'
+     *          - no local language chars, spaces or operators
      */
     name: str | null;
 
@@ -30,5 +32,16 @@ export class Object {
             throw new NameError(name);
         }
         this.name = name;
+    }
+
+    /** @brief object keys list to dump */
+    protected dump: string[] = [];
+
+    toString() {
+        const fields: { [key: string]: string } = {};
+        for (const key of this.dump) {
+            fields[key] = `${(this as any)[key]}`;
+        }
+        return `${this.constructor.name}:${this.name} ${JSON.stringify(fields)}`;
     }
 }

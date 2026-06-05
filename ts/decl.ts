@@ -10,4 +10,6 @@ export * from './comment.ts';
 export * from './types.ts';
 export * from './error.ts';
 export * from './object.ts';
+export * from './message.ts';
+export * from './actor.ts';
 export * from './binex.ts';
