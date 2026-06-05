@@ -44,10 +44,9 @@ export class Actor extends Object {
 
     /**
      * @brief Dispatch and process all messages in mailbox
-     * @param {Message} msg - Message to process
      * @description
      * Actor message handlers must be defined with signature:
-     *   handler(msg) {}
+     *   handler(msg:Message) {}
      *
      * Performance rules:
      * - keep handler() as short and fast as possible

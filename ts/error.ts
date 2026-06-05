@@ -7,10 +7,23 @@
 
 /**
  * @brief Error thrown when identifier name format is invalid
- * @param {any} object - object will be dumped with error message
  */
 export class NameError extends Error {
     constructor(object: Object) {
         super(`object name must be valid identifier\n${object}`);
+    }
+}
+
+/** @brief Error thrown when incoming message selector not defined in actor */
+export class SelectorError extends Error {
+    constructor(object: Object) {
+        super(`unknown message selector\n${object}`);
+    }
+}
+
+/** @brief Error thrown when pop from empty mailbox */
+export class NoMessageError extends Error {
+    constructor(object: Object) {
+        super(`mailbox empty in\n${object}`);
     }
 }

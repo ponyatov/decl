@@ -19,9 +19,7 @@ export class Error extends global.Error {
 }
 
 /**
- * @class NameError
  * @brief Error thrown when identifier name format is invalid
- * @extends Error
  */
 export class NameError extends Error {
     constructor(object) {
@@ -30,9 +28,7 @@ export class NameError extends Error {
 }
 
 /**
- * @class SelectorError
  * @brief Error thrown when incoming message selector not defined in actor
- * @extends Error
  */
 export class SelectorError extends Error {
     constructor(object) {
