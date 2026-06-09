@@ -1,11 +1,11 @@
 .PHONY: ai
 ai: sync
 	cat README.md \
-		decl/*.md decl/core/* decl/gui/* decl/net/* \
-		decl/tutor/* decl/linkedin/* \
+		decl/*.md decl/core/*.md decl/gui/*.md decl/net/*.md \
+		decl/tutor/*.md decl/linkedin/*.md \
 		ts/*.ts package.json tsconfig.json js/*.mjs \
-		decl/vending/* \
+		decl/vending/*.md \
 			> tmp/$(APP).ai.md
-# 		decl/js/* *package.json js/*.mjs ts/*.ts \
-# 		decl/hw/* decl/esp/* \
-# 		decl/py/* \
+# 		decl/js/*.md *package.json js/*.mjs ts/*.ts \
+# 		decl/hw/*.md decl/esp/*.md \
+# 		decl/py/*.md \

@@ -32,3 +32,5 @@ hw Hub:cm4 {
 ![[decl/vending/network]]
 ![[decl/hw/cm4]]
 ![[decl/vending/access]]
+
+# [[Схема мониторинга вендингового аппарата]]
