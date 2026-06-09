@@ -2,10 +2,7 @@
 
 ```decl
 // состояние по току
-state StateCurrent: StateGlobal {
-	enum value<A> { // Ampers
-		OK       A  // ток в норме
-		ERR_HIGH A  // повышено
-	}
+state StateCurrent {
+	enum value<A> : OkHigh // Ampers
 }
 ```

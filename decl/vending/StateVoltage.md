@@ -2,21 +2,14 @@
 
 ```decl
 // состояние по напряжению
-state StateVoltage: StateGlobal {
-	enum value<V> { // Volts
-		OK       V  // напряжение в норме
-		ERR_HIGH V  // повышено
-		ERR_LOW  V  // 
-	}
+state StateVoltage {
+	enum value<V> : OkHighLow // Volts
 }
 ```
 
 ```decl
 // Входное напряжение электропитания
-state MainsVoltage: StateVoltage {
-	enum value<180..280V> { // IEC 60038
-		ERR_HIGH { entry: hi!alert 'Сетевое напряжение повышено' }
-		ERR_LOW  { entry: hi!alert 'Сетевое напряжение понижено' }
-	}
+state MainsVoltage: StateGlobal,StateVoltage {
+	enum value<180..280V> // IEC 60038 range
 }
 ```
