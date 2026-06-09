@@ -31,7 +31,8 @@
 		 - **HAS NO NEW** !!!
 		 - **self. not required**
 		 - {} required and must be ballanced
-- DECL
+- [[decl/decl|decl]]
+	- this target language must be selected by .decl file extension in AI request
 	- syntax
 		- ';' is expresssion splitter, not end of line finalizer
 	- constructors
@@ -39,11 +40,14 @@
 		- if any function has no body code,
 			- it must be replaced with prototype without `{}`
 			- and totally dropped if was not used in a code
-- JS: JavaScript
+- [[decl/js/js|JavaScript]]
+	- this target language must be selected ONLY by .js file extension in AI request
 	- don't use props/privates: prefer generic JS style
 	- comments must be in jsdoc
-- TS: TypeScript
+- [[decl/ts/ts|TypeScript]]
+	- this target language must be selected ONLY by .ts file extension in AI request
 	- comments must be in tsdoc
-
-
-[[decl/ts/binex]]
+- embedded [[decl/cpp/cpp|C++]]
+	- this target language must be selected ONLY by .cpp file extension in AI request
+- bare metal [[decl/cpp/cpp|C]]
+	- this target language must be selected ONLY by .c file extension in AI request
