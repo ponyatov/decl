@@ -2,8 +2,9 @@
 ai: sync
 	cat README.md \
 		decl/*.md decl/core/*.md decl/gui/*.md decl/net/*.md \
-		decl/rust/*.md Cargo.toml src/*.rs \
+		decl/horizon/*.md \
 			> tmp/$(APP).ai.md
+# 		decl/rust/*.md Cargo.toml src/*.rs \
 # 		decl/tutor/*.md decl/linkedin/*.md \
 # 		decl/vending/*.md decl/vending/command/*.md \
 # 		ts/*.ts package.json tsconfig.json js/*.mjs \

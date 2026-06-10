@@ -1,5 +1,9 @@
 use std::io;
 
 fn main() {
-    println!("Hello, world!");
+    let mut name = String::new();
+    io::stdin() // получаем доступ к стандартному вводу
+        .read_line(&mut name)
+        .unwrap();
+    println!("Hello, {}!", name.trim());
 }

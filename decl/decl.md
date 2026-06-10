@@ -62,6 +62,12 @@ Instead of traditional compilation, `decl` uses **literal programming** prin
 - AI-assisted translation generates human-readable **Embedded C++**
 - Documentation and code live together
 
+## reference projects
+
+reference projects used for deleveloping [[decl/decl|decl]] as a form of legacy code representation, and rework
+
+- [[decl/horizon/horizon]]
+
 ## target platforms/languages
 
 - [[decl/js/js]]
