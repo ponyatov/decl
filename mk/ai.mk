@@ -2,7 +2,7 @@
 ai: sync
 	cat README.md \
 		decl/*.md decl/core/*.md decl/gui/*.md decl/net/*.md \
-		decl/rust/*.md \
+		decl/rust/*.md Cargo.toml src/*.rs \
 			> tmp/$(APP).ai.md
 # 		decl/tutor/*.md decl/linkedin/*.md \
 # 		decl/vending/*.md decl/vending/command/*.md \
