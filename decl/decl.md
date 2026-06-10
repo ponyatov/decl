@@ -64,6 +64,9 @@ Instead of traditional compilation, `decl` uses **literal programming** prin
 
 ## target platforms/languages
 
-- [[decl/js/decl]]
+- [[decl/js/js]]
+- [[decl/ts/ts]]
+- [[decl/cpp/cpp|cpp]]
+- [[decl/rust/rust]]
 
 ## [[decl/vending/vending|vending]]
