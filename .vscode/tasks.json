@@ -18,6 +18,14 @@
             "presentation"   : {"showReuseMessage": false, "focus": false, "reveal": "silent", "close": true}
         },
         {
+            "label": "cargo: run",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["run"],
+            "group": {"kind": "build", "isDefault": false},
+            "presentation"   : {"showReuseMessage": false, "focus": true, "reveal": "silent", "close": false}
+        },
+        {
             "label": "make: sync",
             "type": "shell",
             "command": "make",
