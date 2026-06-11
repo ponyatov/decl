@@ -23,7 +23,6 @@ module HorizonServer {
 ## [[decl/horizon/Device]] & Hardware Components
 
 
-
 ## Motor Control Components
 
 - [[srvHBridgeMotor]] - H-Bridge motor control
