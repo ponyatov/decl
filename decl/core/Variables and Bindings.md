@@ -24,3 +24,12 @@ actor = 'Bob'         // let is default and can be omitted (preferred!)
 - Rust-like ownership and borrowing checks applied
 	- default: warnings
 	- strict mode: Rust-like errors
+
+## exception handling & autoinit
+
+```decl
+let item = collection[index] ?= collection[index] = 42 // autoinit
+let data = object.item       ?? log 'no data '         // no element exception
+```
+
+also: [[decl/core/elvis]]

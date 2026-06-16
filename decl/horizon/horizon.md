@@ -4,4 +4,4 @@
 
 ## [[decl/horizon/HorizonServer]]
 
-- 
+[[Core Components interaction diagram]]
