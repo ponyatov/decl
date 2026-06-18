@@ -34,6 +34,9 @@
         // Python
         "ms-python.python",
         "ms-python.autopep8",
+        "pamaron.pytest-runner",
+        // "charliermarsh.ruff",
+        // "batisteo.vscode-django",
         // Rust
         "rust-lang.rust-analyzer",
         "tamasfe.even-better-toml",
