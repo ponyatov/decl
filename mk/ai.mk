@@ -1,13 +1,14 @@
 .PHONY: ai
 ai: sync
 	cat README.md \
-		decl/*.md decl/core/*.md decl/gui/*.md decl/net/*.md \
-		decl/horizon/*.md \
-			> tmp/$(APP).ai.md
-# 		decl/rust/*.md Cargo.toml src/*.rs \
-# 		decl/tutor/*.md decl/linkedin/*.md \
-# 		decl/vending/*.md decl/vending/command/*.md \
-# 		ts/*.ts package.json tsconfig.json js/*.mjs \
-# 		decl/js/*.md *package.json js/*.mjs ts/*.ts \
-# 		decl/hw/*.md decl/esp/*.md \
-# 		decl/py/*.md \
+		doc/decl/core/*.md \
+		doc/decl/cpp/*.md inc/*.h* src/*.c* src/*.l* src/*.y* src/*.r* \
+			README.md doc/ai.md > tmp/$(APP).ai.md
+
+# 		doc/decl/js/*.md ts/*.ts package.json tsconfig.json js/*.js \
+# 		doc/decl/py/*.md \
+# 		doc/decl/hw/*.md doc/decl/esp/*.md \
+# 		doc/decl/rust/*.md Cargo.toml src/*.rs \
+
+# 		doc/decl/vending/*.md doc/decl/vending/command/*.md \
+#		doc/decl/horizon/*.md \

@@ -1,5 +1,7 @@
 # Comments
 
+C-like comments
+
 # line comment
 
 ```decl

@@ -3,10 +3,11 @@
 ## core
 
 - [[decl/core/class]]
-- [[decl/core/const]]
 - [[decl/core/protocol]]
-- [[decl/core/let]]
-- [[decl/core/var]]
+- [[Variables and Bindings]]
+	- [[decl/core/const]]
+	- [[decl/core/let]]
+	- [[decl/core/var]]
 - [[decl/core/type]]
 
 ## dynamic
@@ -15,6 +16,6 @@
 	- by setting `kw` class var:
 
 ```decl
-class Some { kw='some' }
-some Another {} // means inheritance: class Another: Some 
+class Some: kw='some'
+some Another // means inheritance: class Another: Some 
 ```

@@ -7,7 +7,9 @@
 git make curl fzf
 ```
 
-- IDE and file commare tool
+- IDE and file compare tools
+	- **only for developer's workstation**
+	- not applicable for Rpi or server-side sw deploy
 ```
 code meld
 ```

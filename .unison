@@ -1,7 +1,16 @@
 # ln -fs ~/decl/.unison ~/.unison/decl.prf
 # unison decl
+
 root = ./doc/decl
 root = /home/dponyatov/metadoc/decl
+
 prefer = newer
 watch = true
 batch = true
+
+ignore = Name {.git}
+ignore = Name {*~,*.log,*.sw?}
+ignore = Name {bin,tmp,ref,_build,target}
+ignore = Name {doc/html}
+ignore = Name {node_modules,.cache}
+ignore = Name {*.pyc,__pycache__}

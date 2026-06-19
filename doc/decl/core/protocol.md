@@ -1,7 +1,7 @@
 # protocol
 
 ```decl
-class Protocol {
+class Protocol
     RFC:?int
     ISO:?int
     beacon = 1<s>           // ping/pong interval to keep live
@@ -13,9 +13,8 @@ class Protocol {
 	    on send { self.peer << 'ping' }
 	    on recv { self.peer << 'pong' }
     }
-    actor client {}
-    actor server {}
-}
+    client {}               // any methods can be called directly
+    server {}               // and indirectly by async message send
 ```
 - [[decl/net/modbus|modbus]]
 - [[decl/net/measure]]

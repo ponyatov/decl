@@ -14,7 +14,6 @@ git remote add flic git@gitflic.ru:dponyatov/decl.git
 
 ![[decl/toc]]
 
-## [[decl/meta]]
 ## [[project maintenance]]
 ## [[IDE]]: VSCode integration
 ## [[Obsidian]]: documenting
