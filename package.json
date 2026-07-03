@@ -1,14 +1,26 @@
 {
     "name": "decl",
     "version": "0.0.1",
-    "description": "declarative DSL into JS translator: code samples",
+    "description": "declarative DSL into TS/JS translator: code samples",
     "author": "Dmitry Ponyatov <dponyatov@gmail.com>",
     "license": "MIT",
-    "main": "js/mqtt.js",
+    "type": "module",
+    "main": "./js/ts/decl.js",
+    "types": "./types/decl.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./js/ts/decl.d.ts",
+                "default": "./js/ts/decl.js"
+            }
+        }
+    },
     "scripts": {
-        "start": "nodejs js/mqtt.js",
-        "watch": "nodemon js/mqtt.js",
-        "mqtt": "nodemon js/mqtt.js",
+        "build": "tsc",
+        "watch": "tsc --watch",
+        "dev": "nodemon --watch ts --ext ts --exec \"npm run build && npm run start\"",
+        "start": "node js/ts/decl.js",
+        "clean": "rm -rf js/ts/*.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -21,7 +33,9 @@
         "url": "https://github.com/ponyatov/decl.git"
     },
     "devDependencies": {
-        "nodemon": "^3.1.14"
+        "@types/node": "^25.9.1",
+        "nodemon": "^3.1.14",
+        "typescript": "^6.0.3"
     },
     "dependencies": {
         "mqtt": "^5.15.1"

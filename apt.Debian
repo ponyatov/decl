@@ -10,3 +10,4 @@ npm nodejs wabt
 flex bison gperf ccache ninja-build
 libffi-dev libssl-dev libusb-1.0-0-dev
 dfu-util
+mosquitto mosquitto-clients

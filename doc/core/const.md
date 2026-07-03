@@ -1,0 +1,2 @@
+# const
+![[Variables and Bindings]]
